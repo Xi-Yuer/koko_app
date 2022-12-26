@@ -3,6 +3,7 @@ import { useRouter } from '@tarojs/taro'
 import { FC, memo, useEffect, useState } from 'react'
 import { IGoodsDetailInfo } from 'src/service/shop/type'
 import { getGoodsDetail } from '../../../service/shop/index'
+import Banner from './banner/index'
 
 const GoodsDetail: FC = memo(() => {
 
@@ -17,7 +18,9 @@ const GoodsDetail: FC = memo(() => {
   }, [router])
 
   return (
-    <View>{detail?.product_name}</View>
+    <View>
+      <Banner data={detail?.banners} />
+    </View>
   )
 })
 

@@ -9,7 +9,6 @@ export default defineAppConfig({
     {
       root: "subPages",
       pages: ["pages/goods-detail/index"],
-      independent: true,
     },
   ],
   window: {

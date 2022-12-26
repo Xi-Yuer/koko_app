@@ -35,7 +35,7 @@ export interface IGoodsData {
   count: number;
 }
 
-interface IBannerDetail {
+export interface IBannerDetail {
   id: string | number | null;
   productid: string | number | null;
   title: string | null;
