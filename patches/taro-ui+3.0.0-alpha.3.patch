@@ -1,0 +1,224 @@
+diff --git a/node_modules/taro-ui/dist/style/components/avatar.scss b/node_modules/taro-ui/dist/style/components/avatar.scss
+index ad76014..bf801a0 100644
+--- a/node_modules/taro-ui/dist/style/components/avatar.scss
++++ b/node_modules/taro-ui/dist/style/components/avatar.scss
+@@ -1,3 +1,5 @@
++@use "sass:math";
++
+ @import '../variables/default.scss';
+ @import '../mixins/index.scss';
+ 
+@@ -5,7 +7,7 @@
+   width: $at-avatar-size-md;
+   height: $at-avatar-size-md;
+   color: $at-avatar-color;
+-  font-size: $at-avatar-size-md / 2.5;
++  font-size: math.div($at-avatar-size-md, 2.5);
+   line-height: $at-avatar-size-md;
+   text-align: center;
+   border-radius: $border-radius-md;
+@@ -23,14 +25,14 @@
+   &--large {
+     width: $at-avatar-size-lg;
+     height: $at-avatar-size-lg;
+-    font-size: $at-avatar-size-lg / 2.5;
++    font-size: math.div($at-avatar-size-lg, 2.5);
+     line-height: $at-avatar-size-lg;
+   }
+ 
+   &--small {
+     width: $at-avatar-size-sm;
+     height: $at-avatar-size-sm;
+-    font-size: $at-avatar-size-sm / 2.5;
++    font-size: math.div($at-avatar-size-sm, 2.5);
+     line-height: $at-avatar-size-sm;
+   }
+ 
+diff --git a/node_modules/taro-ui/dist/style/components/button.scss b/node_modules/taro-ui/dist/style/components/button.scss
+index e549cfd..b02729e 100644
+--- a/node_modules/taro-ui/dist/style/components/button.scss
++++ b/node_modules/taro-ui/dist/style/components/button.scss
+@@ -84,7 +84,7 @@
+   }
+ 
+   &--circle {
+-    border-radius: $at-button-height / 2;
++    border-radius: $at-button-height * 0.5;
+     background-clip: border-box;
+     overflow: hidden;
+   }
+@@ -99,7 +99,7 @@
+     line-height: $at-button-height-sm - 2;
+ 
+     &.at-button--circle {
+-      border-radius: $at-button-height-sm / 2;
++      border-radius: $at-button-height-sm * 0.5;
+     }
+   }
+ 
+diff --git a/node_modules/taro-ui/dist/style/components/curtain.scss b/node_modules/taro-ui/dist/style/components/curtain.scss
+index f8cdf47..16a7f1b 100644
+--- a/node_modules/taro-ui/dist/style/components/curtain.scss
++++ b/node_modules/taro-ui/dist/style/components/curtain.scss
+@@ -36,7 +36,7 @@ $at-curtain-btn-size: 56px;
+     position: absolute;
+     width: $at-curtain-btn-size;
+     height: $at-curtain-btn-size;
+-    margin-left: -$at-curtain-btn-size / 2;
++    margin-left: -$at-curtain-btn-size * 0.5;
+     left: 50%;
+     bottom: -($at-curtain-btn-size + 24px);
+     align-items: center;
+@@ -68,7 +68,7 @@ $at-curtain-btn-size: 56px;
+     }
+ 
+     &--top {
+-      margin-left: -$at-curtain-btn-size / 2;
++      margin-left: -$at-curtain-btn-size * 0.5;
+       top: -($at-curtain-btn-size + 24px);
+       left: 50%;
+       bottom: auto;
+@@ -88,7 +88,7 @@ $at-curtain-btn-size: 56px;
+     }
+ 
+     &--bottom {
+-      margin-left: -$at-curtain-btn-size / 2;
++      margin-left: -$at-curtain-btn-size * 0.5;
+       bottom: -($at-curtain-btn-size + 24px);
+       left: 50%;
+     }
+diff --git a/node_modules/taro-ui/dist/style/components/flex.scss b/node_modules/taro-ui/dist/style/components/flex.scss
+index 4d3129e..8fca7c7 100644
+--- a/node_modules/taro-ui/dist/style/components/flex.scss
++++ b/node_modules/taro-ui/dist/style/components/flex.scss
+@@ -1,3 +1,5 @@
++@use "sass:math";
++
+ @import '../variables/default.scss';
+ @import '../mixins/index.scss';
+ 
+@@ -116,7 +118,7 @@
+   box-sizing: border-box;
+ 
+   @for $col from 1 through 12 {
+-    $width: ($col / 12) * 100%;
++    $width: math.div($col, 12) * 100%;
+ 
+     &-#{$col} {
+       @include flex(0, 0, $width);
+diff --git a/node_modules/taro-ui/dist/style/components/progress.scss b/node_modules/taro-ui/dist/style/components/progress.scss
+index cadcfbb..659bf11 100644
+--- a/node_modules/taro-ui/dist/style/components/progress.scss
++++ b/node_modules/taro-ui/dist/style/components/progress.scss
+@@ -26,13 +26,13 @@
+     &-inner {
+       width: 100%;
+       background-color: $at-progress-inner-bg-color;
+-      border-radius: $at-progress-height / 2;
++      border-radius: $at-progress-height * 0.5;
+       vertical-align: middle;
+ 
+       &-background {
+         position: relative;
+         height: $at-progress-height;
+-        border-radius: $at-progress-height / 2;
++        border-radius: $at-progress-height * 0.5;
+         background-color: $at-progress-bar-bg-color;
+         transition: all 0.3s $ease-in-out-quad;
+         overflow: hidden;
+@@ -62,7 +62,7 @@
+       right: 0;
+       bottom: 0;
+       background: $at-progress-bar-bg-color-active;
+-      border-radius: $at-progress-height / 2;
++      border-radius: $at-progress-height * 0.5;
+       animation: progress-active 2s $ease-out-quad infinite;
+     }
+   }
+diff --git a/node_modules/taro-ui/dist/style/components/range.scss b/node_modules/taro-ui/dist/style/components/range.scss
+index b806448..51146c3 100644
+--- a/node_modules/taro-ui/dist/style/components/range.scss
++++ b/node_modules/taro-ui/dist/style/components/range.scss
+@@ -3,7 +3,7 @@
+ 
+ .at-range {
+   position: relative;
+-  padding: 0 $at-range-slider-size / 2 + 4PX;
++  padding: 0 $at-range-slider-size * 0.5 + 4PX;
+   width: 100%;
+   box-sizing: border-box;
+ 
+@@ -33,7 +33,7 @@
+ 
+   &__slider {
+     position: absolute;
+-    margin-left: -$at-range-slider-size / 2;
++    margin-left: -$at-range-slider-size * 0.5;
+     width: $at-range-slider-size;
+     height: $at-range-slider-size;
+     border-radius: 50%;
+diff --git a/node_modules/taro-ui/dist/style/components/search-bar.scss b/node_modules/taro-ui/dist/style/components/search-bar.scss
+index 6afe728..1398f62 100644
+--- a/node_modules/taro-ui/dist/style/components/search-bar.scss
++++ b/node_modules/taro-ui/dist/style/components/search-bar.scss
+@@ -26,7 +26,7 @@ $at-search-bar-placholder-color: $color-grey-2;
+     width: 100%;
+     height: $at-search-bar-input-height;
+     background-color: $at-search-bar-input-bg-color;
+-    border-radius: $at-search-bar-input-height / 2;
++    border-radius: $at-search-bar-input-height * 0.5;
+     overflow: hidden;
+     display: flex;
+   }
+diff --git a/node_modules/taro-ui/dist/style/components/tag.scss b/node_modules/taro-ui/dist/style/components/tag.scss
+index 886adb7..1cd494b 100644
+--- a/node_modules/taro-ui/dist/style/components/tag.scss
++++ b/node_modules/taro-ui/dist/style/components/tag.scss
+@@ -41,7 +41,7 @@ $at-tag-border-size: 1PX;
+   }
+ 
+   &--circle {
+-    border-radius: $at-tag-height / 2;
++    border-radius: $at-tag-height * 0.5;
+     background-clip: border-box;
+     overflow: hidden;
+   }
+@@ -53,7 +53,7 @@ $at-tag-border-size: 1PX;
+     line-height: $at-tag-height-sm - 2px;
+ 
+     &.at-tag--circle {
+-      border-radius: $at-tag-height-sm / 2;
++      border-radius: $at-tag-height-sm * 0.5;
+     }
+   }
+ }
+diff --git a/node_modules/taro-ui/dist/style/components/timeline.scss b/node_modules/taro-ui/dist/style/components/timeline.scss
+index b63f67b..2b03fe6 100644
+--- a/node_modules/taro-ui/dist/style/components/timeline.scss
++++ b/node_modules/taro-ui/dist/style/components/timeline.scss
+@@ -65,9 +65,9 @@
+ 
+   &__tail {
+     position: absolute;
+-    top: $at-timeline-dot-size / 2;
+-    bottom: -$at-timeline-dot-size / 2;
+-    left: $at-timeline-dot-size / 2 - 2px;
++    top: $at-timeline-dot-size * 0.5;
++    bottom: -$at-timeline-dot-size * 0.5;
++    left: $at-timeline-dot-size * 0.5 - 2px;
+     border-left: 1PX solid $at-timeline-line-color;
+   }
+ 
+diff --git a/node_modules/taro-ui/dist/style/components/toast.scss b/node_modules/taro-ui/dist/style/components/toast.scss
+index 8e3fdde..7caca8f 100644
+--- a/node_modules/taro-ui/dist/style/components/toast.scss
++++ b/node_modules/taro-ui/dist/style/components/toast.scss
+@@ -85,7 +85,7 @@ $at-toast-bg-color: rgba($color: $color-black-0, $alpha: 0.8);
+     &.at-toast__body--success,
+     &.at-toast__body--error,
+     &.at-toast__body--loading {
+-      padding-bottom: $spacing-v-lg - (($at-toast-font-size * $line-height-zh - $at-toast-font-size) / 2);
++      padding-bottom: $spacing-v-lg - (($at-toast-font-size * $line-height-zh - $at-toast-font-size) * 0.5);
+     }
+   }
+ }

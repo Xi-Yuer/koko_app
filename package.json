@@ -9,6 +9,7 @@
     "css": "sass"
   },
   "scripts": {
+    "postinstall": "patch-package",
     "build:weapp": "taro build --type weapp",
     "build:swan": "taro build --type swan",
     "build:alipay": "taro build --type alipay",
@@ -71,7 +72,10 @@
     "eslint-plugin-import": "^2.12.0",
     "eslint-plugin-react": "^7.8.2",
     "eslint-plugin-react-hooks": "^4.2.0",
+    "patch-package": "^6.5.0",
+    "postinstall-postinstall": "^2.1.0",
     "react-refresh": "^0.11.0",
+    "sass-migrator": "^1.7.2",
     "stylelint": "^14.4.0",
     "typescript": "^4.1.0",
     "webpack": "4.46.0"
