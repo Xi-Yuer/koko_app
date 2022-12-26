@@ -1,7 +1,9 @@
 import { View } from '@tarojs/components'
 import { useRouter } from '@tarojs/taro'
 import { FC, memo, useEffect, useState } from 'react'
-import { IGoodsDetailInfo } from 'src/service/shop/type'
+import AreaNav from '../../../components/area-nav/index'
+
+import { IGoodsDetailInfo } from '../../../service/shop/type'
 import { getGoodsDetail } from '../../../service/shop/index'
 import Banner from './banner/index'
 
@@ -19,6 +21,7 @@ const GoodsDetail: FC = memo(() => {
 
   return (
     <View>
+      <AreaNav />
       <Banner data={detail?.banners} />
     </View>
   )
