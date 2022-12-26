@@ -1,15 +1,23 @@
 import { View } from '@tarojs/components'
-import { useLaunch } from '@tarojs/taro'
-import { memo } from 'react'
+import { useRouter } from '@tarojs/taro'
+import { FC, memo, useEffect, useState } from 'react'
+import { IGoodsDetailInfo } from 'src/service/shop/type'
+import { getGoodsDetail } from '../../../service/shop/index'
 
-const GoodsDetail = memo(() => {
+const GoodsDetail: FC = memo(() => {
 
-  useLaunch((options) => {
-    console.log('dd')
-    console.log(options)
-  })
+  const router = useRouter()
+  const [detail, setDetail] = useState<IGoodsDetailInfo>()
+
+  useEffect(() => {
+    const goodsID = router.params.id
+    getGoodsDetail(goodsID as string).then(res => {
+      setDetail(res.data[0])
+    })
+  }, [router])
+
   return (
-    <View>GoodsDetail</View>
+    <View>{detail?.product_name}</View>
   )
 })
 

@@ -34,3 +34,31 @@ export interface IGoodsData {
   status: string | number;
   count: number;
 }
+
+interface IBannerDetail {
+  id: string | number | null;
+  productid: string | number | null;
+  title: string | null;
+  url: string | null;
+}
+export interface IGoodsDetailInfo {
+  banners: IBannerDetail[];
+  create_time: string;
+  description: string;
+  id: string;
+  old_price: string;
+  picture: string;
+  price: string;
+  product_address: string;
+  product_name: string;
+  publice_status: number;
+  sale_count: number;
+  stock: number;
+  stock_unit: string;
+  update_time: string;
+  userId: string | number;
+}
+
+export interface IGoodsDetail {
+  data: IGoodsDetailInfo[];
+}
