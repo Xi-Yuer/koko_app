@@ -1,4 +1,5 @@
 import { Image, Text, View } from '@tarojs/components'
+import Taro from '@tarojs/taro'
 import { FC, memo, PropsWithChildren } from 'react'
 import { IGoods } from 'src/service/shop/type'
 import styles from './index.module.scss'
@@ -6,10 +7,18 @@ import styles from './index.module.scss'
 interface IProps extends PropsWithChildren {
   data: IGoods
 }
+
 const Goods: FC<IProps> = memo((props: IProps) => {
   const { data } = props
+
+  const itemClick = () => {
+    const { id } = data
+    Taro.navigateTo({
+      url: `/subPages/pages/goods-detail/index?id=${id}`
+    })
+  }
   return (
-    <View className={styles.wrapper}>
+    <View className={styles.wrapper} onClick={() => itemClick()}>
       <View className={styles.left}>
         <Image src={data.picture} mode='aspectFill' />
       </View>

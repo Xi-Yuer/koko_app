@@ -2,6 +2,7 @@
 import { FC, memo, useEffect, useState } from 'react'
 import { ScrollView, View } from '@tarojs/components'
 
+import { IGoods } from 'src/service/shop/type'
 import { getGoodsList } from '../../service/shop/index'
 
 import AreaTitle from '../../components/area-title/index'
@@ -12,12 +13,14 @@ import Goods from './components/goods'
 import styles from './index.module.scss'
 
 const Shop: FC = memo(() => {
-  const [goodsList, setGoodsList] = useState<any[]>()
+  const [goodsList, setGoodsList] = useState<IGoods[]>()
+
   useEffect(() => {
     getGoodsList().then(res => {
       setGoodsList(res.data)
     })
   }, [])
+
   return (
     <View className={styles.wrapper}>
       <Notify />
