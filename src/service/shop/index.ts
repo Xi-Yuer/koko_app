@@ -10,11 +10,13 @@ export const getBannerList = (): Promise<IData> => {
 export const getGoodsList = (): Promise<IGoodsData> => {
   return request({
     url: "/product",
+    showToast: true,
   });
 };
 
 export const getGoodsDetail = (id: string | number): Promise<IGoodsDetail> => {
   return request({
     url: `/product/goodsInfo/${id}`,
+    showToast: true,
   });
 };
