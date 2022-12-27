@@ -19,10 +19,15 @@ const GoodsDetail: FC = memo(() => {
     })
   }, [router])
 
+  const arr = Array(100).fill("哈哈哈")
+
   return (
     <View>
       <AreaNav />
       <Banner data={detail?.banners} />
+      {
+        arr.map(i => <View key={i}>哈哈哈</View>)
+      }
     </View>
   )
 })
