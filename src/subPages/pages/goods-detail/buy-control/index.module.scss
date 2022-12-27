@@ -1,0 +1,32 @@
+.wrapper {
+  width: 90%;
+  margin: 0 auto;
+  height: 80px;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  bottom: 30px;
+  border-radius: 50px;
+  background-color: #fd7102;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  font-size: 30px;
+  .buy {
+    flex: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .into_car {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #2f2929;
+    height: 100%;
+    width: 280px;
+  }
+}
