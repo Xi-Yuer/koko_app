@@ -1,0 +1,47 @@
+.wrapper {
+  .navbg {
+    position: relative;
+    width: 100%;
+    height: 400px;
+    overflow: hidden;
+    background-image: url("../../assets/img/bg/bg.gif");
+    background-repeat: no-repeat;
+    background-position-x: -40px;
+    background-position-y: -40px;
+    background-size: cover;
+    box-sizing: border-box;
+    .nav_title {
+      position: relative;
+      font-weight: bold;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+    .login {
+      font-size: 40px;
+      color: white;
+      display: inline-block;
+      position: absolute;
+      bottom: 140px;
+      left: 22%;
+      z-index: 10;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      .login_text {
+        margin-left: 20px;
+        display: inline-block;
+      }
+    }
+  }
+  .bot_wrapper {
+    position: absolute;
+    top: 300px;
+    width: 100%;
+    height: calc(100vh - 300px);
+    border-top-right-radius: 50px;
+    border-top-left-radius: 50px;
+    background-color: white;
+  }
+}
