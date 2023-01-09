@@ -1,0 +1,19 @@
+.wrapper {
+  display: flex;
+  box-sizing: border-box;
+  justify-content: space-between;
+  align-items: center;
+  margin: 50px 0;
+  &:first-child {
+    margin-top: 0;
+  }
+  color: rgb(61, 61, 61);
+  .title {
+    margin: 0 15px;
+    font-size: 25px;
+  }
+  .left {
+    display: flex;
+    align-items: center;
+  }
+}

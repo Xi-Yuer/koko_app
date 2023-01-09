@@ -2,3 +2,7 @@
 page {
   background-color: #fafafafa;
 }
+button::after {
+  border: none;
+  background-color: transparent !important;
+}
