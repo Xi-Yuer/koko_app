@@ -1,10 +1,10 @@
 import { request } from "../index";
 
-export const Login = (code: string) => {
+export const Login = (phoneCode: string, openidCode: string) => {
   return request({
     url: "/user/Login",
     method: "POST",
-    data: { code },
+    data: { phoneCode, openidCode },
     showToast: true,
   });
 };

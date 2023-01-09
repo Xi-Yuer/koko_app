@@ -1,4 +1,4 @@
-import { Text, View } from '@tarojs/components'
+import { Button, Text, View } from '@tarojs/components'
 import Taro, { pxTransform } from '@tarojs/taro'
 import { memo } from 'react'
 import { AtAvatar } from 'taro-ui'
@@ -9,9 +9,9 @@ import styles from './index.module.scss'
 const Mine = memo(() => {
   const { menuButtonInfo, navHeight } = getHeight()
 
-  const login = () => {
+  const getPhoneNumber = ({ detail }) => {
     Taro.login().then(({ code }) => {
-      Login(code).then(res => {
+      Login(detail.code, code).then(res => {
         console.log(res)
       })
     })
@@ -30,8 +30,7 @@ const Mine = memo(() => {
         </View>
         <View className={styles.login}>
           <AtAvatar circle text='凹凸'></AtAvatar>
-          <Text onClick={login} className={styles.login_text}>点击登录</Text>
-          {/* <Button openType='getPhoneNumber' onGetPhoneNumber={getPhoneNumber}>点击登录</Button> */}
+          <Button openType='getPhoneNumber' onGetPhoneNumber={getPhoneNumber}>点击登录</Button>
         </View>
       </View>
       <View className={styles.bot_wrapper}></View>
