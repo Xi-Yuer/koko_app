@@ -1,6 +1,7 @@
 import { Image, Text, View } from '@tarojs/components'
 import { FC, memo, useState } from 'react'
 import { AtInputNumber } from 'taro-ui'
+import { IntoGoodsCar } from '../../../../service/car'
 import { IGoodsDetailInfo } from '../../../../service/shop/type'
 import styles from './index.module.scss'
 
@@ -23,6 +24,7 @@ const PopUp: FC<IProps> = memo((props) => {
   const clikHandle = () => {
     if (!isBuy) {
       // 加入购物车
+      IntoGoodsCar(price, count, data?.id!)
     }
   }
   return (

@@ -1,14 +1,24 @@
-import cache from "../../utils/cache";
 import { request } from "../index";
 
-export const getCarGoods = (orderStatus: number | string) => {
-  const user = cache.get("USER_DETAIL");
+export const getCarGoods = () => {
   return request({
-    url: "/order/orderList",
+    url: "/order/car",
     showToast: true,
+  });
+};
+
+export const IntoGoodsCar = (
+  price: number,
+  count: number,
+  productID: string | number
+) => {
+  return request({
+    url: "/order/intoCar",
+    method: "POST",
     data: {
-      orderStatus,
-      userId: user.id,
+      price,
+      count,
+      productID,
     },
   });
 };
