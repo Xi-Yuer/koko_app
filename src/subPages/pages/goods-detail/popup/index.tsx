@@ -19,6 +19,12 @@ const PopUp: FC<IProps> = memo((props) => {
     setCount(e)
     setPrice(e * (data?.price || 1))
   }
+
+  const clikHandle = () => {
+    if (!isBuy) {
+      // 加入购物车
+    }
+  }
   return (
     <View className={styles.wrapper}>
       <View className={styles.top}>
@@ -36,7 +42,7 @@ const PopUp: FC<IProps> = memo((props) => {
           onChange={handleChange} type='number'
         />
       </View>
-      <View className={styles.control}>{!isBuy ? '加入购物车' : '立即购买'}</View>
+      <View className={styles.control} onClick={clikHandle}>{!isBuy ? '加入购物车' : '立即购买'}</View>
     </View>
   )
 })
