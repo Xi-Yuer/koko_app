@@ -1,4 +1,5 @@
 import Taro from "@tarojs/taro";
+import cache from "../utils/cache";
 import env from "../utils/env";
 import { IConfig } from "./types";
 
@@ -8,7 +9,7 @@ export const request = ({
   showToast = false,
   data,
 }: IConfig): Promise<any> => {
-  const token = Taro.getStorageSync("TOKEN");
+  const token = cache.get("USER_TOKEN");
 
   if (showToast) {
     Taro.showLoading({

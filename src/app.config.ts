@@ -8,7 +8,13 @@ export default defineAppConfig({
   subpackages: [
     {
       root: "subPages",
-      pages: ["pages/goods-detail/index"],
+      pages: [
+        "pages/goods-detail/index",
+        "pages/mine/about/index",
+        "pages/mine/detail/index",
+        "pages/mine/order/index",
+        "pages/mine/setting/index",
+      ],
     },
   ],
   window: {

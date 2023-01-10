@@ -48,6 +48,7 @@ const Mine = memo(() => {
         {fnList.map(i => {
           return <FnList key={i.icon} data={i} />
         })}
+        <Text className={styles.version}>v:0.0.1</Text>
       </View>
     </View>
   )
