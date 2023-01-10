@@ -10,12 +10,14 @@ import Banner from './banner/index'
 import GoodsInfo from './goods-info'
 import styles from './index.module.scss'
 import BuyControl from './buy-control'
+import PopUp from './popup'
 
 const GoodsDetail: FC = memo(() => {
 
   const router = useRouter()
   const [detail, setDetail] = useState<IGoodsDetailInfo>()
   const [openDialog, setOpenDialog] = useState(false)
+  const [isBuy, setIsBuy] = useState(false)
 
   useEffect(() => {
     const goodsID = router.params.id
@@ -23,6 +25,11 @@ const GoodsDetail: FC = memo(() => {
       setDetail(res.data[0])
     })
   }, [router])
+
+  const openDialogHandle = (bol: any) => {
+    setOpenDialog(true)
+    setIsBuy(bol)
+  }
 
 
   return (
@@ -32,10 +39,9 @@ const GoodsDetail: FC = memo(() => {
       <View className={styles.padding_}>
         <GoodsInfo data={detail} />
       </View>
-      <BuyControl data={detail} open={() => setOpenDialog(true)} />
+      <BuyControl open={openDialogHandle} />
       <AtFloatLayout isOpened={openDialog} onClose={() => setOpenDialog(false)}>
-        这是内容区 随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写这是内容区
-        随你怎么写这是内容区 随你怎么写这是内容区 随你怎么写
+        <PopUp data={detail} isBuy={isBuy} />
       </AtFloatLayout>
     </View>
   )

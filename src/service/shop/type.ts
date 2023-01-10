@@ -48,7 +48,7 @@ export interface IGoodsDetailInfo {
   id: string;
   old_price: string;
   picture: string;
-  price: string;
+  price: number;
   product_address: string;
   product_name: string;
   publice_status: number;

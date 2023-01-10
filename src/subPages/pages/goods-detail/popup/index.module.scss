@@ -1,0 +1,43 @@
+.wrapper {
+  position: relative;
+  height: 500px;
+  width: 100%;
+  .top {
+    display: flex;
+    .img {
+      margin-right: 25px;
+      image {
+        width: 120px;
+        height: 120px;
+        overflow: hidden;
+      }
+    }
+    .price {
+      font-size: 30px;
+      font-weight: bold;
+      color: red;
+    }
+  }
+  .count {
+    width: 100%;
+    display: flex;
+    margin: 15px 0;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .control {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    width: 90%;
+    height: 80px;
+    border-radius: 25px;
+    background-color: orangered;
+    color: white;
+  }
+}
