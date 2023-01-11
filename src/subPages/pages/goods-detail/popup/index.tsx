@@ -31,9 +31,9 @@ const PopUp: FC<IProps> = memo((props) => {
           title: "已加入购物车",
           icon: 'success'
         })
+        closePopup()
       })
     }
-    closePopup()
   }
   return (
     <View className={styles.wrapper}>

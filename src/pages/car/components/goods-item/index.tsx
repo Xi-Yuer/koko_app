@@ -1,7 +1,7 @@
 import { Image, View } from '@tarojs/components'
 import { AtInputNumber } from 'taro-ui'
 import { FC, memo, useEffect, useState } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 
 import styles from './index.module.scss'
 import checkIMG from '../../../../assets/img/icon/check-circle-fill.png'

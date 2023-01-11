@@ -8,10 +8,7 @@ import styles from './index.module.scss'
 
 const Edit = memo(() => {
   const { isEdit } = useSelector<any, any>((state => state.car))
-  const { detail } = useSelector<any, any>((state => state.user))
   const dispatch = useDispatch()
-
-  console.log(detail)
 
   const [address, setAddress] = useState('选择收货地址')
   const editHanldel = () => {

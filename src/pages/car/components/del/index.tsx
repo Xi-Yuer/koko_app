@@ -2,7 +2,7 @@ import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { FC, memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearCar } from '../../../..//store'
+import { clearCar, edit } from '../../../..//store'
 import { delGoodsCar } from '../../../../service/car/index'
 import styles from './inde.module.scss'
 
@@ -26,6 +26,7 @@ const Del: FC<IProps> = memo((props) => {
         icon: 'success'
       })
       dispatch(clearCar())
+      dispatch(edit(true))
       initData()
     })
   }
