@@ -31,6 +31,8 @@ const GoodsDetail: FC = memo(() => {
     setIsBuy(bol)
   }
 
+  const closePopup = () => setOpenDialog(false)
+
 
   return (
     <View>
@@ -41,7 +43,7 @@ const GoodsDetail: FC = memo(() => {
       </View>
       <BuyControl open={openDialogHandle} />
       <AtFloatLayout isOpened={openDialog} onClose={() => setOpenDialog(false)}>
-        <PopUp data={detail} isBuy={isBuy} />
+        <PopUp data={detail} isBuy={isBuy} closePopup={closePopup} />
       </AtFloatLayout>
     </View>
   )

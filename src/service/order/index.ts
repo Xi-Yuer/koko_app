@@ -10,3 +10,8 @@ export const updateOrderStatus = (
     data: { id, orderStatus },
   });
 };
+
+// 创建订单
+export const createOrder = () => {
+  
+}

@@ -14,5 +14,5 @@ export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
 export const { setUser } = userReducer.actions;
-export const { addCar, delCar } = carReducer.actions;
+export const { addCar, delCar, clearCar, edit } = carReducer.actions;
 export default store;

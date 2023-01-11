@@ -21,7 +21,13 @@ const Settlement = memo(() => {
       <View className={styles.select_text}>已选 ({checked.length})</View>
       <View className={styles.right}>
         <View className={styles.price}>合计￥{totalPrice}</View>
-        <View className={styles.btn} onClick={placeOrder}>下单</View>
+        <View
+          className={styles.btn}
+          onClick={placeOrder}
+          style={!checked.length ? { backgroundColor: '#ff8255', pointerEvents: 'none' } : ''}
+        >
+          下单
+        </View>
       </View>
     </View>
   )

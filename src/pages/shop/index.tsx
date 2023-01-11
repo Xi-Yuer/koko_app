@@ -11,6 +11,7 @@ import Notify from './components/notify'
 import Goods from './components/goods'
 
 import styles from './index.module.scss'
+import Empty from '../../components/empty/index'
 
 const Shop: FC = memo(() => {
   const [goodsList, setGoodsList] = useState<IGoods[]>()
@@ -30,6 +31,9 @@ const Shop: FC = memo(() => {
         {
           goodsList?.map(i => <Goods key={i.id} data={i} />
           )
+        }
+        {
+          !goodsList?.length && <Empty />
         }
       </ScrollView>
     </View>

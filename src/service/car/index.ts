@@ -1,12 +1,13 @@
 import { request } from "../index";
 
+// 获取购物车商品
 export const getCarGoods = () => {
   return request({
     url: "/order/car",
-    showToast: true,
   });
 };
 
+// 加入购物车
 export const IntoGoodsCar = (
   price: number,
   count: number,
@@ -19,6 +20,17 @@ export const IntoGoodsCar = (
       price,
       count,
       productID,
+    },
+  });
+};
+
+// 移除购物车
+export const delGoodsCar = (ids: string[]) => {
+  return request({
+    url: "/order/car",
+    method: "DELETE",
+    data: {
+      ids,
     },
   });
 };
