@@ -1,6 +1,12 @@
 .wrapper {
   width: 100vw;
   height: 100vh;
+  display: flex;
+  flex-direction: column;
   box-sizing: border-box;
   padding: 0 20px;
+  .goods_wrapper {
+    flex: 1;
+    position: relative;
+  }
 }

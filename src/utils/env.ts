@@ -10,7 +10,7 @@ let config = {
     timeOut: 10000,
   },
   production: {
-    baseUrl: 'https://xiyuer.club',
+    baseUrl: 'http://localhost:80',
     timeOut: 10000,
   },
 };

@@ -8,6 +8,13 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  .location {
+    display: flex;
+    align-items: center;
+    font-size: 25px;
+    color: rgb(116, 116, 116);
+    padding: 0 20px;
+  }
   .edit {
     font-size: 25px;
     color: rgb(46, 46, 46);

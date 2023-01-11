@@ -1,6 +1,6 @@
 
 import { FC, memo, useEffect, useState } from 'react'
-import { ScrollView, View } from '@tarojs/components'
+import { View } from '@tarojs/components'
 
 import { IGoods } from 'src/service/shop/type'
 import { getGoodsList } from '../../service/shop/index'
@@ -27,7 +27,7 @@ const Shop: FC = memo(() => {
       <Notify />
       <Banner />
       <AreaTitle title='商品列表' />
-      <ScrollView>
+      <View className={styles.goods_wrapper}>
         {
           goodsList?.map(i => <Goods key={i.id} data={i} />
           )
@@ -35,7 +35,7 @@ const Shop: FC = memo(() => {
         {
           !goodsList?.length && <Empty />
         }
-      </ScrollView>
+      </View>
     </View>
   )
 })

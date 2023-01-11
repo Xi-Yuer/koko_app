@@ -14,7 +14,7 @@ export default defineAppConfig({
         "pages/mine/detail/index",
         "pages/mine/order/index",
         "pages/mine/setting/index",
-        "pages/place-order/index"
+        "pages/place-order/index",
       ],
     },
   ],
@@ -53,4 +53,5 @@ export default defineAppConfig({
       },
     ],
   },
+  requiredPrivateInfos: ["chooseAddress"],
 });
