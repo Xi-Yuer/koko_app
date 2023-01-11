@@ -1,0 +1,34 @@
+.wrapper {
+  width: 100%;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 20px;
+  border-top: 1px solid #eee;
+  .select_text {
+    color: rgb(70, 70, 70);
+    font-size: 30px;
+  }
+  .right {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
+  .price {
+    font-size: 30px;
+    font-weight: bold;
+    color: red;
+  }
+  .btn {
+    width: 200px;
+    height: 100%;
+    margin-left: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: orangered;
+    color: white;
+    font-size: 30px;
+  }
+}
