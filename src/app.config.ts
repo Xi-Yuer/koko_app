@@ -54,4 +54,5 @@ export default defineAppConfig({
     ],
   },
   requiredPrivateInfos: ["chooseAddress"],
+  lazyCodeLoading: "requiredComponents",
 });

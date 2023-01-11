@@ -38,7 +38,7 @@ const Car = memo(() => {
         }
       </View>
       {
-        !goods.length && <Empty />
+        !goods?.length && <Empty />
       }
     </View>
   )
