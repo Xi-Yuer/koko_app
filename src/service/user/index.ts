@@ -16,7 +16,7 @@ interface IAddress {
   detailInfo: string;
   provinceName: string;
   telNumber: string;
-  realName: string;
+  userName: string;
 }
 export const createAddress = (data: IAddress): Promise<any> => {
   return request({

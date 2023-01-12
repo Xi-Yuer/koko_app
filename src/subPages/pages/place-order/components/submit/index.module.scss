@@ -1,0 +1,30 @@
+.wrapper {
+  height: 100%;
+  display: flex;
+  box-sizing: border-box;
+  align-items: center;
+  padding: 10px 30px;
+  overflow: hidden;
+  justify-content: flex-end;
+  background-color: white;
+  .totalCount {
+    color: grey;
+    font-size: 25px;
+  }
+  .totalPrice {
+    font-weight: bold;
+    color: red;
+    font-size: 30px;
+    margin:0px 15px;
+  }
+  .btn {
+    text-align: center;
+    width: 180px;
+    height: 70px;
+    line-height: 70px;
+    border-radius: 40px;
+    background-color: rgb(253, 137, 29);
+    color: white;
+    font-size: 28px;
+  }
+}

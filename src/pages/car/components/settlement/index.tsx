@@ -1,10 +1,13 @@
+import Taro from '@tarojs/taro'
 import { memo } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import { View } from '@tarojs/components'
+import { addTemOrder } from '../../../../store/index'
 
 import styles from './index.module.scss'
 
 const Settlement = memo(() => {
+  const dispatch = useDispatch()
 
   const { checked } = useSelector<any, any>((state => state.car))
 
@@ -14,7 +17,10 @@ const Settlement = memo(() => {
   })
 
   const placeOrder = () => {
-    console.log(checked)
+    dispatch(addTemOrder(checked))
+    Taro.navigateTo({
+      url: '/subPages/pages/place-order/index'
+    })
   }
   return (
     <View className={styles.wrapper}>

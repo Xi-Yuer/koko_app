@@ -29,7 +29,7 @@ const Edit = memo(() => {
         detailInfo: res.detailInfo,
         provinceName: res.provinceName,
         telNumber: res.telNumber,
-        realName: res.userName
+        userName: res.userName
       }).then(() => {
         getUserAddressAction(res)
         setAdd(res.provinceName + res.cityName + res.countyName + res.detailInfo)

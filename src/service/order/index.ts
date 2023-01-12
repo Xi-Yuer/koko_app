@@ -13,4 +13,21 @@ export const updateOrderStatus = (
 };
 
 // 创建订单
-export const createOrder = (orders: any) => {};
+interface IOder {
+  product_id: string;
+  amount: number;
+  total_price: number;
+  userName: string;
+  mobile: string;
+  address: string;
+  note: string;
+}
+export const createOrder = (orders: IOder[]) => {
+  return request({
+    url: "/order/create",
+    method: "POST",
+    data: {
+      orders,
+    },
+  });
+};
