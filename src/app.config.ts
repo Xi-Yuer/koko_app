@@ -33,12 +33,12 @@ export default defineAppConfig({
         iconPath: "assets/img/tabar/shop.png",
         selectedIconPath: "assets/img/tabar/shop-s.png",
       },
-      {
-        pagePath: "pages/menu/index",
-        text: "点餐",
-        iconPath: "assets/img/tabar/menu.png",
-        selectedIconPath: "assets/img/tabar/menu-s.png",
-      },
+      // {
+      //   pagePath: "pages/menu/index",
+      //   text: "点餐",
+      //   iconPath: "assets/img/tabar/menu.png",
+      //   selectedIconPath: "assets/img/tabar/menu-s.png",
+      // },
       {
         pagePath: "pages/car/index",
         text: "购物车",
