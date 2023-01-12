@@ -4,6 +4,7 @@ import { request } from "../index";
 export const getCarGoods = () => {
   return request({
     url: "/order/car",
+    isPermission: true,
   });
 };
 
@@ -16,6 +17,7 @@ export const IntoGoodsCar = (
   return request({
     url: "/order/intoCar",
     method: "POST",
+    isPermission: true,
     data: {
       price,
       count,
@@ -29,6 +31,7 @@ export const delGoodsCar = (ids: string[]) => {
   return request({
     url: "/order/car",
     method: "DELETE",
+    isPermission: true,
     data: {
       ids,
     },

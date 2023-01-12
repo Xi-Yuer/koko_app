@@ -1,5 +1,5 @@
 import { View, Text } from '@tarojs/components'
-import Taro, { useDidShow } from '@tarojs/taro'
+import Taro from '@tarojs/taro'
 import { memo, useState } from 'react'
 import { AtIcon } from 'taro-ui'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,11 +13,7 @@ const Edit = memo(() => {
   const { address } = useSelector<any, any>((state => state.user))
   const dispatch = useDispatch()
 
-  const [add, setAdd] = useState('')
-
-  useDidShow(() => {
-    setAdd(address?.provinceName + address?.cityName + address?.countyName + address?.detailInfo || '请选择收货地址')
-  })
+  const [add, setAdd] = useState(address?.provinceName + address?.cityName + address?.countyName + address?.detailInfo || '请选择收货地址')
   const editHanldel = () => {
     dispatch(edit(false))
   }

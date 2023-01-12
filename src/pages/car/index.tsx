@@ -16,6 +16,7 @@ const Car = memo(() => {
 
   const { isEdit } = useSelector<any, any>((state) => state.car)
 
+
   useEffect(() => initData(), [])
   useDidShow(() => initData())
 
@@ -26,7 +27,9 @@ const Car = memo(() => {
   }
   return (
     <View className={styles.wrapper}>
-      <Edit />
+      {
+        goods?.length > 0 && <Edit />
+      }
       {
         goods?.map(i => {
           return <GoodsItem data={i} key={i.id} />

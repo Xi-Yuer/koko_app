@@ -20,7 +20,7 @@ const Settlement = memo(() => {
     <View className={styles.wrapper}>
       <View className={styles.select_text}>已选 ({checked.length})</View>
       <View className={styles.right}>
-        <View className={styles.price}>合计￥{totalPrice}</View>
+        <View className={styles.price}>合计￥{totalPrice.toFixed(2)}</View>
         <View
           className={styles.btn}
           onClick={placeOrder}

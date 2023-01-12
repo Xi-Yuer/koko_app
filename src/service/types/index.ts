@@ -22,4 +22,5 @@ export interface IConfig {
   data?: any;
   method?: keyof Method;
   showToast?: boolean;
+  isPermission?: boolean;
 }

@@ -1,6 +1,7 @@
 import { View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { FC, memo } from 'react'
+import { AtIcon } from 'taro-ui'
 import { useDispatch, useSelector } from 'react-redux'
 import { clearCar, edit } from '../../../..//store'
 import { delGoodsCar } from '../../../../service/car/index'
@@ -37,7 +38,7 @@ const Del: FC<IProps> = memo((props) => {
         style={!checked.length ? { backgroundColor: '#ff8255', pointerEvents: 'none' } : ''}
         onClick={delHandle}
       >
-        删除({checked.length})
+        <AtIcon value='trash' size='20'></AtIcon>删除({checked.length})
       </View>
     </View>
   )

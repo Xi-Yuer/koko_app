@@ -7,10 +7,17 @@ export const request = ({
   url,
   method = "GET",
   showToast = false,
+  isPermission = false,
   data,
 }: IConfig): Promise<any> => {
   const token = cache.get("USER_TOKEN");
-
+  if (isPermission && !token) {
+    Taro.showToast({
+      title: "请先登录",
+      icon: "error",
+    });
+    return Promise.reject("请先登录");
+  }
   if (showToast) {
     Taro.showLoading({
       title: "加载中",

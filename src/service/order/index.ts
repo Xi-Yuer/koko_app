@@ -7,6 +7,7 @@ export const updateOrderStatus = (
   return request({
     url: "/order/pay",
     method: "POST",
+    isPermission: true,
     data: { id, orderStatus },
   });
 };

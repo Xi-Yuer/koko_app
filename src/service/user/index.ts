@@ -22,6 +22,7 @@ export const createAddress = (data: IAddress): Promise<any> => {
   return request({
     url: "/user/address",
     method: "POST",
+    isPermission: true,
     data: {
       addressInfo: data,
     },

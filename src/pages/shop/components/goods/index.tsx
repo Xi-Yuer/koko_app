@@ -45,9 +45,6 @@ const Goods: FC<IProps> = memo((props: IProps) => {
                 {data.old_price}
               </Text>
             </View>
-            <View className={styles.buy_box}>
-              <Text >立即购买</Text>
-            </View>
           </View>
         </View>
       </View>
