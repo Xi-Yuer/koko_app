@@ -3,10 +3,10 @@ import { Button, Text, View } from '@tarojs/components'
 import Taro, { pxTransform } from '@tarojs/taro'
 import { memo } from 'react'
 import { AtAvatar } from 'taro-ui'
-import { Login } from '../../service/user/index'
+import { getUserAddress, Login } from '../../service/user/index'
 import { getHeight } from '../../utils/system'
 import styles from './index.module.scss'
-import { setUser } from '../../store/index'
+import { getUserAddressAction, setUser } from '../../store/index'
 import { fnList } from './constant'
 import FnList from '../../components/fn-list/index'
 
@@ -20,6 +20,9 @@ const Mine = memo(() => {
     Taro.login().then(({ code }) => {
       Login(detail.code, code).then(res => {
         userDispatch(setUser(res))
+        getUserAddress().then(address => {
+          userDispatch(getUserAddressAction(address.data[0]))
+        })
       })
     })
   }

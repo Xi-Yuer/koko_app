@@ -12,6 +12,4 @@ export const updateOrderStatus = (
 };
 
 // 创建订单
-export const createOrder = () => {
-  
-}
+export const createOrder = (orders: any) => {};

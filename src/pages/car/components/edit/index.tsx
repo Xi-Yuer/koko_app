@@ -1,33 +1,51 @@
 import { View, Text } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import Taro, { useDidShow } from '@tarojs/taro'
 import { memo, useState } from 'react'
 import { AtIcon } from 'taro-ui'
 import { useDispatch, useSelector } from 'react-redux'
-import { edit } from '../../../../store/index'
+import { edit, getUserAddressAction } from '../../../../store/index'
+import { createAddress } from '../../../../service/user/index'
+
 import styles from './index.module.scss'
 
 const Edit = memo(() => {
   const { isEdit } = useSelector<any, any>((state => state.car))
+  const { address } = useSelector<any, any>((state => state.user))
   const dispatch = useDispatch()
 
-  const [address, setAddress] = useState('选择收货地址')
+  const [add, setAdd] = useState('')
+
+  useDidShow(() => {
+    setAdd(address?.provinceName + address?.cityName + address?.countyName + address?.detailInfo || '请选择收货地址')
+  })
   const editHanldel = () => {
     dispatch(edit(false))
   }
   const outEdit = () => {
     dispatch(edit(true))
   }
+
   const getAddress = () => {
     Taro.chooseAddress().then(res => {
-      const result = res.provinceName + res.cityName + res.countyName + res.detailInfo
-      setAddress(result)
+      createAddress({
+        cityName: res.cityName,
+        countyName: res.countyName,
+        detailInfo: res.detailInfo,
+        provinceName: res.provinceName,
+        telNumber: res.telNumber,
+        realName: res.userName
+      }).then(() => {
+        getUserAddressAction(res)
+        setAdd(res.provinceName + res.cityName + res.countyName + res.detailInfo)
+      })
     })
   }
+  // realname
   return (
     <View className={styles.wrapper}>
       <View className={styles.location} onClick={getAddress}>
         <AtIcon value='map-pin' size='15' color='#747474'></AtIcon>
-        <Text>{address}</Text>
+        <Text>{add}</Text>
       </View>
       <View className={styles.edit}>
         <View className={styles.line}></View>
