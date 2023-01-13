@@ -13,21 +13,24 @@ export const updateOrderStatus = (
 };
 
 // 创建订单
-interface IOder {
-  product_id: string;
-  amount: number;
-  total_price: number;
-  userName: string;
-  mobile: string;
-  address: string;
-  note: string;
-}
-export const createOrder = (orders: IOder[]) => {
+export const createOrder = (products: string, total_price: number) => {
   return request({
     url: "/order/create",
     method: "POST",
     data: {
-      orders,
+      products,
+      total_price,
+    },
+  });
+};
+
+// 成功支付订单
+export const orderPayed = (orderId): Promise<any> => {
+  return request({
+    url: "/pay/notify_url",
+    method: "POST",
+    data: {
+      orderId,
     },
   });
 };

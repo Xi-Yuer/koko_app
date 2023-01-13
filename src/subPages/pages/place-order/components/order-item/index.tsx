@@ -20,7 +20,7 @@ const OrderItem: FC<IProps> = memo((props) => {
           <View className={styles.title} >{data.product.product_name}</View>
           <View className={styles.sub_title} >{data.product.description}</View>
           <View className={styles.count}>
-            <View className={styles.price}>￥{data.price}</View>
+            <View className={styles.price}>￥{data.product.price}</View>
             <View className={styles.add}>x{data.count}</View>
           </View>
         </View>
