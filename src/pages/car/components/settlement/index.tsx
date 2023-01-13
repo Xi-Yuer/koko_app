@@ -13,7 +13,7 @@ const Settlement = memo(() => {
 
   let totalPrice = 0
   checked.forEach(i => {
-    totalPrice += Number(i.price)
+    totalPrice += Number(i.product.price * i.count)
   })
 
   const placeOrder = () => {

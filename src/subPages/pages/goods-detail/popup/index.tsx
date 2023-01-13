@@ -26,7 +26,7 @@ const PopUp: FC<IProps> = memo((props) => {
   const clikHandle = () => {
     if (!isBuy) {
       // 加入购物车
-      IntoGoodsCar(price, count, data?.id!).then(() => {
+      IntoGoodsCar(count, data?.id!).then(() => {
         Taro.showToast({
           title: "已加入购物车",
           icon: 'success'

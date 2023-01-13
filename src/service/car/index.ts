@@ -10,7 +10,6 @@ export const getCarGoods = () => {
 
 // 加入购物车
 export const IntoGoodsCar = (
-  price: number,
   count: number,
   productID: string | number
 ) => {
@@ -19,7 +18,6 @@ export const IntoGoodsCar = (
     method: "POST",
     isPermission: true,
     data: {
-      price,
       count,
       productID,
     },

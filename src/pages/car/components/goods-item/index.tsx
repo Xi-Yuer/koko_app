@@ -1,7 +1,7 @@
 import Taro from '@tarojs/taro'
 import { Image, View } from '@tarojs/components'
 import { AtInputNumber } from 'taro-ui'
-import { FC, Fragment, memo, useEffect, useState } from 'react'
+import { FC, memo, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
 import styles from './index.module.scss'
@@ -64,7 +64,7 @@ const GoodsItem: FC<IProps> = memo((props) => {
         <View className={styles.title} onClick={navToDetailPage}>{data.product.product_name}</View>
         <View className={styles.sub_title} onClick={navToDetailPage}>{data.product.description}</View>
         <View className={styles.count}>
-          <View className={styles.price}>￥{data.price}</View>
+          <View className={styles.price}>￥{data.product.price}</View>
           <View className={styles.add}>
             <AtInputNumber
               min={1}
