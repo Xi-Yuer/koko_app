@@ -32,7 +32,7 @@ const Submit = memo(() => {
     // 订单的备注信息可能会更新，这里需要更新一下订单备注信息
     await updateOrder(orderId, JSON.stringify(temOrders))
     pay(
-      detail.openid, "龙山生态甲鱼的消费订单", total_price * 100, orderId
+      detail.openid, "龙山生态甲鱼的消费订单", Math.ceil(total_price * 100), orderId
     ).then(res => {
       Taro.requestPayment({
         timeStamp: res.timeStamp,

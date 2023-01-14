@@ -38,7 +38,7 @@ const Goods: FC<IProps> = memo((props: IProps) => {
             <View>
               <Text className={styles.price}>
                 <Text className={styles.price_}>价格:￥</Text>
-                {data.price}
+                {data.price}/{data.stock_unit}
               </Text>
               <Text className={styles.old_price}>
                 <Text className={styles.oldPrice_}>原价:￥</Text>

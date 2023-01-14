@@ -32,8 +32,7 @@ const GoodsItem: FC<IProps> = memo((props) => {
     } else {
       dispatch(delCar(data.id))
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [check])
+  }, [check, count, data, dispatch])
 
   const checkHandle = () => {
     setCheck(!check)
@@ -58,7 +57,7 @@ const GoodsItem: FC<IProps> = memo((props) => {
         <View className={styles.title} onClick={navToDetailPage}>{data.product.product_name}</View>
         <View className={styles.sub_title} onClick={navToDetailPage}>{data.product.description}</View>
         <View className={styles.count}>
-          <View className={styles.price}>￥{data.product.price}</View>
+          <View className={styles.price}>￥{data.product.price}/{data.product.stock_unit}</View>
           <View className={styles.add}>
             <AtInputNumber
               min={1}

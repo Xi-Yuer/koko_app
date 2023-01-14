@@ -46,7 +46,9 @@ export const request = ({
         reject(err);
       })
       .finally(() => {
-        Taro.hideLoading();
+        if (showToast) {
+          Taro.hideLoading();
+        }
       });
   });
 };

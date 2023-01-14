@@ -27,11 +27,11 @@ const PopUp: FC<IProps> = memo((props) => {
     if (!isBuy) {
       // 加入购物车
       IntoGoodsCar(count, data?.id!).then(() => {
+        closePopup()
         Taro.showToast({
           title: "已加入购物车",
           icon: 'success'
         })
-        closePopup()
       })
     }
   }
