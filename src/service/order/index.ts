@@ -34,3 +34,15 @@ export const orderPayed = (orderId): Promise<any> => {
     },
   });
 };
+
+//更新订单信息
+export const updateOrder = (id: string, products: string) => {
+  return request({
+    url:"/order/update",
+    method:'POST',
+    data:{
+      id,
+      products
+    }
+  })
+};

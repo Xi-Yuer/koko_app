@@ -12,11 +12,10 @@ interface IProps {
   data: any;
 }
 const GoodsItem: FC<IProps> = memo((props) => {
-  const dispatch = useDispatch()
   const { data } = props
 
+  const dispatch = useDispatch()
   const [count, setCount] = useState(data.count)
-  const [price, setPrice] = useState(data.price)
   const [check, setCheck] = useState(false)
 
   const handleChange = e => {
@@ -24,22 +23,17 @@ const GoodsItem: FC<IProps> = memo((props) => {
   }
 
   useEffect(() => {
-    setPrice(count * data.price)
-  }, [count, data.price])
-
-  useEffect(() => {
     if (check) {
       dispatch(delCar(data.id))
       dispatch(addCar({
         ...data,
-        price,
         count
       }))
     } else {
       dispatch(delCar(data.id))
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [check, price])
+  }, [check])
 
   const checkHandle = () => {
     setCheck(!check)

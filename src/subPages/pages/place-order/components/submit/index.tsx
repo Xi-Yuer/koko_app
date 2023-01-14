@@ -2,7 +2,7 @@ import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { createOrder, orderPayed } from '../../../../../service/order'
+import { createOrder, orderPayed, updateOrder } from '../../../../../service/order'
 import { pay } from '../../../../../service/pay/index'
 import styles from './index.module.scss'
 
@@ -18,17 +18,19 @@ const Submit = memo(() => {
     totalPrice += Number(i.product.price * i.count)
   })
 
-
-  // 页面加载就创建订单
+  // 页面加载创建订单
   useEffect(() => {
     createOrder(JSON.stringify(temOrders), totalPrice).then(res => {
       setOrderId(res.orderId)
       setTotal_price(res.total_price)
     })
-  }, [temOrders, totalPrice])
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [])
 
-
-  const payHandle = () => {
+  // 支付时更新订单状态
+  const payHandle = async () => {
+    // 订单的备注信息可能会更新，这里需要更新一下订单备注信息
+    await updateOrder(orderId, JSON.stringify(temOrders))
     pay(
       detail.openid, "龙山生态甲鱼的消费订单", total_price * 100, orderId
     ).then(res => {
