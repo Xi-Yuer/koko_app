@@ -25,7 +25,7 @@ export default defineAppConfig({
     navigationBarTextStyle: "black",
   },
   tabBar: {
-    selectedColor: "#61b9e7",
+    selectedColor: "#fe6d11",
     list: [
       {
         pagePath: "pages/shop/index",
