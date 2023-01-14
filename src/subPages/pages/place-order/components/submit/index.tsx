@@ -8,7 +8,7 @@ import styles from './index.module.scss'
 
 const Submit = memo(() => {
   const { temOrders } = useSelector<any, any>(state => state.order)
-  const { detail } = useSelector<any, any>(state => state.user)
+  const { detail, address } = useSelector<any, any>(state => state.user)
 
   const [orderId, setOrderId] = useState('')
   const [total_price, setTotal_price] = useState(0)
@@ -29,6 +29,13 @@ const Submit = memo(() => {
 
   // 支付时更新订单状态
   const payHandle = async () => {
+    if (!address) {
+      Taro.showToast({
+        title: "请先完成收货地址信息",
+        icon: "error"
+      })
+      return
+    }
     // 订单的备注信息可能会更新，这里需要更新一下订单备注信息
     await updateOrder(orderId, JSON.stringify(temOrders))
     pay(

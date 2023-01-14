@@ -2,7 +2,7 @@ import Taro from '@tarojs/taro'
 import { Text, View } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
 import { memo, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
 import cache from '../../../utils/cache'
 import { createAddress } from '../../../service/user/index'
 import { getUserAddressAction } from '../../../store/index'
@@ -16,6 +16,7 @@ const PlaceOrder = memo(() => {
   const { address } = useSelector<any, any>((state) => state.user)
   const storageAddress = cache.get("USER_ADDRESS")
 
+  const dispatch = useDispatch()
   const [add, setAdd] = useState(address || storageAddress)
 
   const chooseAddressHandle = () => {
@@ -28,7 +29,7 @@ const PlaceOrder = memo(() => {
         telNumber: res.telNumber,
         userName: res.userName
       }).then(() => {
-        getUserAddressAction(res)
+        dispatch(getUserAddressAction(res))
         setAdd(res)
       })
     })
