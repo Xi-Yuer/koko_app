@@ -32,8 +32,6 @@ const GoodsDetail: FC = memo(() => {
   }
 
   const closePopup = () => setOpenDialog(false)
-
-
   return (
     <View>
       <AreaNav />

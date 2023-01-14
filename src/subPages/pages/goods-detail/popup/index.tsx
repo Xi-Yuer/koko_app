@@ -1,7 +1,9 @@
 import { Image, Text, View } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { FC, memo, useState } from 'react'
+import { useDispatch, useSelector } from 'react-redux'
 import { AtInputNumber } from 'taro-ui'
+import { addTemOrder } from '../../../../store/index'
 import { IntoGoodsCar } from '../../../../service/car'
 import { IGoodsDetailInfo } from '../../../../service/shop/type'
 import styles from './index.module.scss'
@@ -14,8 +16,10 @@ interface IProps {
 const PopUp: FC<IProps> = memo((props) => {
   const { data, isBuy, closePopup } = props
 
+  const dispatch = useDispatch()
   const [price = data?.price, setPrice] = useState<any>(data?.price)
   const [count, setCount] = useState<any>(1)
+  const { detail } = useSelector<any, any>(state => state.user)
 
 
   const handleChange = e => {
@@ -32,6 +36,16 @@ const PopUp: FC<IProps> = memo((props) => {
           title: "已加入购物车",
           icon: 'success'
         })
+      })
+    } else {
+      // 立即购买
+      dispatch(addTemOrder([{
+        product: data,
+        count,
+        user_id: detail.id
+      }]))
+      Taro.navigateTo({
+        url: '/subPages/pages/place-order/index'
       })
     }
   }
