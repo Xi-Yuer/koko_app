@@ -1,4 +1,5 @@
 import { request } from "../index";
+import cache from "../../utils/cache";
 
 export const Login = (phoneCode: string, openidCode: string) => {
   return request({
@@ -19,6 +20,9 @@ interface IAddress {
   userName: string;
 }
 export const createAddress = (data: IAddress): Promise<any> => {
+  if (data) {
+    cache.set("USER_ADDRESS", data);
+  }
   return request({
     url: "/user/address",
     method: "POST",

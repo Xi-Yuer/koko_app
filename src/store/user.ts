@@ -18,13 +18,15 @@ export const userReducer = createSlice({
     setUser(state, action: PayloadAction<any>) {
       state.detail = action.payload.data;
       state.token = action.payload.token;
-      cache.set("USER_DETAIL", state.detail);
-      cache.set("USER_TOKEN", state.token);
+      cache.set("USER_DETAIL", action.payload.data);
+      cache.set("USER_TOKEN", action.payload.token);
     },
 
     getUserAddressAction(state, action: PayloadAction<any>) {
       state.address = action.payload;
-      cache.set("USER_ADDRESS", state.address);
+      if (action.payload) {
+        cache.set("USER_ADDRESS", action.payload);
+      }
     },
   },
 });

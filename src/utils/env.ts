@@ -2,7 +2,7 @@
 // https://xiyuer.club
 let config = {
   development: {
-    baseUrl: 'http://localhost:80',
+    baseUrl: 'https://xiyuer.club',
     timeOut: 10000,
   },
   test: {

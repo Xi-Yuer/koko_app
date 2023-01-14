@@ -13,7 +13,7 @@ const Edit = memo(() => {
   const { address } = useSelector<any, any>((state => state.user))
   const dispatch = useDispatch()
 
-  const [add, setAdd] = useState(address?.provinceName + address?.cityName + address?.countyName + address?.detailInfo || '请选择收货地址')
+  const [add, setAdd] = useState(address?.provinceName + address?.cityName + address?.countyName + address?.detailInfo || '点击选择收货地址')
   const editHanldel = () => {
     dispatch(edit(false))
   }
@@ -21,6 +21,7 @@ const Edit = memo(() => {
     dispatch(edit(true))
   }
 
+  // 添加地址
   const getAddress = () => {
     Taro.chooseAddress().then(res => {
       createAddress({
