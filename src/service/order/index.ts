@@ -1,5 +1,6 @@
 import { request } from "../index";
 
+// 更新订单状态
 export const updateOrderStatus = (
   id: string | number,
   orderStatus: number
@@ -36,13 +37,23 @@ export const orderPayed = (orderId): Promise<any> => {
 };
 
 //更新订单信息
-export const updateOrder = (id: string, products: string) => {
+export const updateOrder = (id: string, products: string): Promise<any> => {
   return request({
-    url:"/order/update",
-    method:'POST',
-    data:{
+    url: "/order/update",
+    method: "POST",
+    data: {
       id,
-      products
-    }
-  })
+      products,
+    },
+  });
+};
+
+// 获取订单
+export const getUserOrder = (orderStatus?: number): Promise<any> => {
+  return request({
+    url: "/order/orderList",
+    data: {
+      orderStatus,
+    },
+  });
 };
