@@ -1,4 +1,4 @@
-import Taro from '@tarojs/taro'
+import Taro, { useDidShow } from '@tarojs/taro'
 import { AtTabs, AtTabsPane } from 'taro-ui'
 import { ScrollView, View } from '@tarojs/components'
 import { memo, useEffect, useState } from 'react'
@@ -23,6 +23,7 @@ const Order = memo(() => {
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => initData(), [current])
+  useDidShow(() => initData())
 
   useEffect(() => {
     if (firstIn) {

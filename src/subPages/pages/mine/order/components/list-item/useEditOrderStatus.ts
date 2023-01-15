@@ -55,7 +55,7 @@ export const useEditOrderStatus = (data: any, initData: () => void) => {
     });
     dispatch(addTemOrder(tem));
     Taro.navigateTo({
-      url: "/subPages/pages/place-order/index",
+      url: `/subPages/pages/place-order/index?id=${data.id}`,
     });
   };
   return {

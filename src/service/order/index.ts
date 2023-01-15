@@ -58,12 +58,23 @@ export const getUserOrder = (orderStatus?: number): Promise<any> => {
   });
 };
 
+// 删除订单
 export const delUserOrder = (orderId: string): Promise<any> => {
   return request({
     url: "/order",
     method: "DELETE",
     data: {
       orderId,
+    },
+  });
+};
+
+// 查找订单
+export const getUserOrderByID = (id: string): Promise<any> => {
+  return request({
+    url: "/order/info",
+    data: {
+      id,
     },
   });
 };

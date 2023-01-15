@@ -1,12 +1,16 @@
 import { View, Text } from '@tarojs/components'
-import Taro from '@tarojs/taro'
+import Taro, { useRouter } from '@tarojs/taro'
 import { memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { createOrder, orderPayed, updateOrder } from '@/service/order'
+import { createOrder, getUserOrderByID, orderPayed, updateOrder } from '@/service/order'
 import { pay } from '@/service/pay/index'
 import styles from './index.module.scss'
 
 const Submit = memo(() => {
+
+  const router = useRouter()
+  const { id } = router.params
+
   const { temOrders } = useSelector<any, any>(state => state.order)
   const { detail, address } = useSelector<any, any>(state => state.user)
 
@@ -20,10 +24,17 @@ const Submit = memo(() => {
 
   // 页面加载创建订单
   useEffect(() => {
-    createOrder(JSON.stringify(temOrders), totalPrice).then(res => {
-      setOrderId(res.orderId)
-      setTotal_price(res.total_price)
-    })
+    if (!id) {
+      createOrder(JSON.stringify(temOrders), totalPrice).then(res => {
+        setOrderId(res.orderId)
+        setTotal_price(res.total_price)
+      })
+    } else {
+      getUserOrderByID(id).then(res => {
+        setOrderId(res.data.id)
+        setTotal_price(res.data.total_price)
+      })
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -49,6 +60,7 @@ const Submit = memo(() => {
         paySign: res.paySign,
         success: function () {
           orderPayed(orderId).then(result => {
+            Taro.navigateBack()
             Taro.showToast({
               title: result.message,
               icon: 'success'
@@ -57,7 +69,7 @@ const Submit = memo(() => {
         },
         fail: function () {
           Taro.showToast({
-            title: '支付失败',
+            title: res.message,
             icon: 'error'
           })
         }
