@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 import { AtTabs, AtTabsPane } from 'taro-ui'
 import { ScrollView, View } from '@tarojs/components'
 import { memo, useEffect, useState } from 'react'
@@ -9,10 +10,11 @@ import ListItem from './components/list-item/index'
 import styles from './index.module.scss'
 
 const Order = memo(() => {
-  const tabList = [{ title: '代付款' }, { title: '代发货' }, { title: '运输中' }, { title: '已签收' }]
+  const tabList = [{ title: '待付款' }, { title: '待发货' }, { title: '运输中' }, { title: '已签收' }]
 
   const [current, setCurrent] = useState(0)
   const [list, setList] = useState<any>([])
+  const [firstIn, setFirstIn] = useState(true)
   const [refresherTriggered, setRefresherTriggered] = useState(false)
 
   const handleClick = (value) => {
@@ -22,11 +24,21 @@ const Order = memo(() => {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => initData(), [current])
 
+  useEffect(() => {
+    if (firstIn) {
+      Taro.showLoading()
+    }
+  })
+
   const initData = () => {
     getUserOrder(current + 1).then(res => {
       setList(res.data)
     }).finally(() => {
       setRefresherTriggered(false)
+      if (firstIn) {
+        Taro.hideLoading()
+        setFirstIn(false)
+      }
     })
   }
 

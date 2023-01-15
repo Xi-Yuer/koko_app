@@ -2,14 +2,14 @@ import { request } from "../index";
 
 // 更新订单状态
 export const updateOrderStatus = (
-  id: string | number,
+  orderId: string | number,
   orderStatus: number
 ): Promise<any> => {
   return request({
     url: "/order/pay",
     method: "POST",
     isPermission: true,
-    data: { id, orderStatus },
+    data: { orderId, orderStatus },
   });
 };
 

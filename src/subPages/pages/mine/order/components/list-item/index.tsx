@@ -1,86 +1,41 @@
 import Taro from '@tarojs/taro'
 import { Image, View, Text } from '@tarojs/components'
-import { useDispatch } from 'react-redux'
-import { FC, memo, useState } from 'react'
+import { FC, memo } from 'react'
 import { AtSwipeAction } from "taro-ui"
 import { SwipeActionOption } from 'taro-ui/types/swipe-action'
 
-import { addTemOrder } from '@/store/index'
-import { delUserOrder } from '@/service/order'
 import dayjs from 'dayjs'
+
 import { Enum } from '@/enum/index'
+import { btn_text } from './constant'
 
 import styles from './inddex.module.scss'
+import { useEditOrderStatus } from './useEditOrderStatus'
 
-
-interface IType extends SwipeActionOption {
+export interface IType extends SwipeActionOption {
   type: number
 }
-const style = {
-  backgroundColor: 'transparent',
-  height: '25px',
-  overflow: 'hidden',
-  marginTop: 'none'
-}
-const options: IType[] = [
-  {
-    text: '删除',
-    type: 0,
-    style: {
-      ...style,
-      color: 'grey'
-    }
-  },
-  {
-    text: '支付',
-    type: 1,
-    style: {
-      ...style,
-      color: 'orangered'
-    }
-  }
-]
-
 interface IProps {
   data: any;
-  initData: Function;
+  initData: () => void;
   status: number
 }
 
 const ListItem: FC<IProps> = memo((props) => {
   const { data, status, initData } = props
 
-  const dispatch = useDispatch()
-  const [isOpen, setIsOpen] = useState(false)
+  const options: IType[] = [
+    ...btn_text[status]
+  ]
 
-  const clickHandle = ({ type }: IType) => {
-    setIsOpen(false)
-    if (type === 0) {
-      // 删除
-      delUserOrder(data.id).then(() => initData())
-    } else {
-      // 支付
-      const tem: any = []
-      data.products.forEach(i => {
-        if (i) {
-          tem.push(
-            {
-              ...data,
-              count: i.count,
-              product: {
-                ...i,
-                ...i.product
-              }
-            }
-          )
-        }
-      })
-      dispatch(addTemOrder(tem))
-      Taro.navigateTo({
-        url: '/subPages/pages/place-order/index'
-      })
-    }
+  const { isOpen, setIsOpen, clickHandle } = useEditOrderStatus(data, initData)
+
+  const navToDetailPage = (id) => {
+    Taro.navigateTo({
+      url: `/subPages/pages/goods-detail/index?id=${id}`
+    })
   }
+
   return (
     <View className={styles.containner}>
       <View>
@@ -89,10 +44,10 @@ const ListItem: FC<IProps> = memo((props) => {
           isOpened={isOpen}
           onClick={clickHandle}
         >
-          <View className={styles.status}>
+          <View className={styles.status} onClick={() => setIsOpen(!isOpen)}>
             <View>{Enum[status]}</View>
             {
-              !isOpen && <View className={styles.btn} onClick={() => setIsOpen(!isOpen)}>· · ·</View>
+              !isOpen && <View className={styles.btn}>· · ·</View>
             }
           </View>
         </AtSwipeAction>
@@ -101,7 +56,7 @@ const ListItem: FC<IProps> = memo((props) => {
         data?.products?.map(i => {
           return (
             <View key={i.id} className={styles.item}>
-              <View className={styles.wrapper}>
+              <View className={styles.wrapper} onClick={() => navToDetailPage(i.product.id)}>
                 <View className={styles.img}>
                   <Image src={i.product.picture} mode='aspectFill'></Image>
                 </View>

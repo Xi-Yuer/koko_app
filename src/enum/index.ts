@@ -6,8 +6,8 @@ export enum orderStatus {
 }
 
 export const Enum = {
-  0: "代付款",
-  1: "代发货",
+  0: "待付款",
+  1: "待发货",
   2: "运输中",
   3: "已签收",
 };
