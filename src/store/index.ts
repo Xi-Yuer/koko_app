@@ -17,5 +17,5 @@ export type AppDispatch = typeof store.dispatch;
 
 export const { setUser, getUserAddressAction } = userReducer.actions;
 export const { addCar, delCar, clearCar, edit } = carReducer.actions;
-export const { addTemOrder } = orderReducer.actions;
+export const { addTemOrder, clearTemOrder } = orderReducer.actions;
 export default store;

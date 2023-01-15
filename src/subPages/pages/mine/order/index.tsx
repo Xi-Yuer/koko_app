@@ -1,4 +1,4 @@
-import Taro, { useDidShow } from '@tarojs/taro'
+import { useDidShow } from '@tarojs/taro'
 import { AtTabs, AtTabsPane } from 'taro-ui'
 import { ScrollView, View } from '@tarojs/components'
 import { memo, useEffect, useState } from 'react'
@@ -14,7 +14,6 @@ const Order = memo(() => {
 
   const [current, setCurrent] = useState(0)
   const [list, setList] = useState<any>([])
-  const [firstIn, setFirstIn] = useState(true)
   const [refresherTriggered, setRefresherTriggered] = useState(false)
 
   const handleClick = (value) => {
@@ -25,21 +24,11 @@ const Order = memo(() => {
   useEffect(() => initData(), [current])
   useDidShow(() => initData())
 
-  useEffect(() => {
-    if (firstIn) {
-      Taro.showLoading()
-    }
-  })
-
   const initData = () => {
     getUserOrder(current + 1).then(res => {
       setList(res.data)
     }).finally(() => {
       setRefresherTriggered(false)
-      if (firstIn) {
-        Taro.hideLoading()
-        setFirstIn(false)
-      }
     })
   }
 

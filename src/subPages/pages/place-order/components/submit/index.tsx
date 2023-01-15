@@ -1,14 +1,18 @@
 import { View, Text } from '@tarojs/components'
 import Taro, { useRouter } from '@tarojs/taro'
 import { memo, useEffect, useState } from 'react'
-import { useSelector } from 'react-redux'
+import { useDispatch, useSelector } from 'react-redux'
+
+import { delGoodsCar } from '@/service/car/index'
 import { createOrder, getUserOrderByID, orderPayed, updateOrder } from '@/service/order'
 import { pay } from '@/service/pay/index'
+import { clearCar, clearTemOrder } from '@/store/index'
 import styles from './index.module.scss'
 
 const Submit = memo(() => {
 
   const router = useRouter()
+  const dispatch = useDispatch()
   const { id } = router.params
 
   const { temOrders } = useSelector<any, any>(state => state.order)
@@ -60,10 +64,17 @@ const Submit = memo(() => {
         paySign: res.paySign,
         success: function () {
           orderPayed(orderId).then(result => {
-            Taro.navigateBack()
-            Taro.showToast({
-              title: result.message,
-              icon: 'success'
+            // 删除购物车里的订单
+            const ids = temOrders.map(i => i.id)
+            delGoodsCar(ids).then(() => {
+              // 清空临时保存的订单
+              dispatch(clearTemOrder())
+              dispatch(clearCar())
+              Taro.navigateBack()
+              Taro.showToast({
+                title: result.message,
+                icon: 'success'
+              })
             })
           })
         },

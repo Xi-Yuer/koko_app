@@ -15,5 +15,8 @@ export const orderReducer = createSlice({
     addTemOrder(state, action: PayloadAction<any>) {
       state.temOrders = action.payload;
     },
+    clearTemOrder(state) {
+      state.temOrders = [];
+    },
   },
 });

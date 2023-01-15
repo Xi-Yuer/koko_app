@@ -52,6 +52,7 @@ export const updateOrder = (id: string, products: string): Promise<any> => {
 export const getUserOrder = (orderStatus?: number): Promise<any> => {
   return request({
     url: "/order/orderList",
+    showToast: true,
     data: {
       orderStatus,
     },
