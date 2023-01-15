@@ -14,13 +14,23 @@
     "strictNullChecks": true,
     "sourceMap": true,
     "baseUrl": ".",
+    "paths": {
+      "@": ["src"],
+      "@/*": ["src/*"],
+      "@/components/*": ["./src/components/*"],
+      "@/assets/*": ["./src/assets/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/hooks/*": ["./src/hooks/*"],
+      "@/store/*": ["./src/store/*"],
+      "@/utils/*": ["./src/utils/*"],
+      "@/enum/*": ["./src/enum/*"],
+      "@/service/*": ["./src/service/*"]
+    },
     "rootDir": ".",
     "jsx": "react-jsx",
     "allowJs": true,
     "resolveJsonModule": true,
-    "typeRoots": [
-      "node_modules/@types"
-    ]
+    "typeRoots": ["node_modules/@types"]
   },
   "include": ["./src", "./types"],
   "compileOnSave": false

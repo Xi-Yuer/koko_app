@@ -3,12 +3,13 @@ import { Button, Text, View } from '@tarojs/components'
 import Taro, { pxTransform } from '@tarojs/taro'
 import { memo } from 'react'
 import { AtAvatar } from 'taro-ui'
-import { getUserAddress, Login } from '../../service/user/index'
-import { getHeight } from '../../utils/system'
-import styles from './index.module.scss'
-import { getUserAddressAction, setUser } from '../../store/index'
+import { getUserAddress, Login } from '@/service/user/index'
+import { getHeight } from '@/utils/system'
+import { getUserAddressAction, setUser } from '@/store/index'
+import FnList from '@/components/fn-list/index'
+
 import { fnList } from './constant'
-import FnList from '../../components/fn-list/index'
+import styles from './index.module.scss'
 
 const Mine = memo(() => {
   const { menuButtonInfo, navHeight } = getHeight()

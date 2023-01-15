@@ -1,7 +1,7 @@
 import { AtTabs, AtTabsPane } from 'taro-ui'
 import { View } from '@tarojs/components'
 import { memo, useEffect, useState } from 'react'
-import { getUserOrder } from '../../../../service/order/index'
+import { getUserOrder } from '@/service/order/index'
 
 import styles from './index.module.scss'
 import ListItem from './components/list-item/index'

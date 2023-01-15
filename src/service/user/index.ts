@@ -1,5 +1,5 @@
+import cache from "@/utils/cache";
 import { request } from "../index";
-import cache from "../../utils/cache";
 
 export const Login = (phoneCode: string, openidCode: string) => {
   return request({

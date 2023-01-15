@@ -2,10 +2,10 @@ import { View } from '@tarojs/components'
 import { useRouter } from '@tarojs/taro'
 import { AtFloatLayout } from "taro-ui"
 import { FC, memo, useEffect, useState } from 'react'
-import AreaNav from '../../../components/area-nav/index'
+import AreaNav from '@/components/area-nav/index'
 
-import { IGoodsDetailInfo } from '../../../service/shop/type'
-import { getGoodsDetail } from '../../../service/shop/index'
+import { IGoodsDetailInfo } from '@/service/shop/type'
+import { getGoodsDetail } from '@/service/shop/index'
 import Banner from './banner/index'
 import GoodsInfo from './goods-info'
 import styles from './index.module.scss'

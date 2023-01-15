@@ -2,7 +2,7 @@ import Taro from '@tarojs/taro'
 import { memo } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { View } from '@tarojs/components'
-import { addTemOrder } from '../../../../store/index'
+import { addTemOrder } from '@/store/index'
 
 import styles from './index.module.scss'
 

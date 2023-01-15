@@ -3,9 +3,9 @@ import Taro from '@tarojs/taro'
 import { FC, memo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AtInputNumber } from 'taro-ui'
-import { addTemOrder } from '../../../../store/index'
-import { IntoGoodsCar } from '../../../../service/car'
-import { IGoodsDetailInfo } from '../../../../service/shop/type'
+import { addTemOrder } from '@/store/index'
+import { IntoGoodsCar } from '@/service/car'
+import { IGoodsDetailInfo } from '@/service/shop/type'
 import styles from './index.module.scss'
 
 interface IProps {

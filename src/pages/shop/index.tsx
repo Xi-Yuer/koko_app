@@ -3,15 +3,15 @@ import { FC, memo, useEffect, useState } from 'react'
 import { View } from '@tarojs/components'
 
 import { IGoods } from 'src/service/shop/type'
-import { getGoodsList } from '../../service/shop/index'
+import { getGoodsList } from '@/service/shop/index'
 
-import AreaTitle from '../../components/area-title/index'
+import AreaTitle from '@/components/area-title/index'
+import Empty from '@/components/empty/index'
 import Banner from './components/banner'
 import Notify from './components/notify'
 import Goods from './components/goods'
 
 import styles from './index.module.scss'
-import Empty from '../../components/empty/index'
 
 const Shop: FC = memo(() => {
   const [goodsList, setGoodsList] = useState<IGoods[]>()

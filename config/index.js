@@ -1,3 +1,5 @@
+import path from 'path'
+
 const config = {
   projectName: 'mini_app',
   date: '2022-12-26',
@@ -68,6 +70,16 @@ const config = {
         enable: true, // 默认为 false，如需使用 css modules 功能，则设为 true
       }
     }
+  },
+  alias: {
+    '@/assets': path.resolve(__dirname, '..', 'src/assets'),
+    '@/components': path.resolve(__dirname, '..', 'src/components'),
+    '@/pages': path.resolve(__dirname, '..', 'src/pages'),
+    '@/hooks': path.resolve(__dirname, '..', 'src/hooks'),
+    '@/store': path.resolve(__dirname, '..', 'src/store'),
+    '@/utils': path.resolve(__dirname, '..', 'src/utils'),
+    '@/enum': path.resolve(__dirname, '..', 'src/enum'),
+    '@/service': path.resolve(__dirname, '..', 'src/service')
   }
 }
 

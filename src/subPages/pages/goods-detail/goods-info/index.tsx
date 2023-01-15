@@ -1,9 +1,9 @@
 import { Image, Text, View } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
 import { FC, memo } from 'react'
-import { IGoodsDetailInfo } from 'src/service/shop/type'
-import AreaTitle from '../../../../components/area-title/index'
-import Divider from '../../../../components/divider/index'
+import { IGoodsDetailInfo } from '@/service/shop/type'
+import AreaTitle from '@/components/area-title/index'
+import Divider from '@/components/divider/index'
 import styles from './index.module.scss'
 
 interface IProps {

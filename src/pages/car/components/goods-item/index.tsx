@@ -4,9 +4,10 @@ import { AtInputNumber } from 'taro-ui'
 import { FC, memo, useEffect, useState } from 'react'
 import { useDispatch } from 'react-redux'
 
+import checkIMG from '@/assets/img/icon/check-circle-fill.png'
+import { addCar, delCar } from '@/store/index'
+
 import styles from './index.module.scss'
-import checkIMG from '../../../../assets/img/icon/check-circle-fill.png'
-import { addCar, delCar } from '../../../../store/index'
 
 interface IProps {
   data: any;

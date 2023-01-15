@@ -2,7 +2,7 @@ import { Image, View, Text } from '@tarojs/components'
 import { FC, memo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { AtIcon, AtFloatLayout, AtTextarea } from 'taro-ui'
-import { addTemOrder } from '../../../../../store/index'
+import { addTemOrder } from '@/store/index'
 
 import styles from './inddex.module.scss'
 

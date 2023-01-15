@@ -3,8 +3,8 @@ import Taro from '@tarojs/taro'
 import { FC, memo } from 'react'
 import { AtIcon } from 'taro-ui'
 import { useDispatch, useSelector } from 'react-redux'
-import { clearCar, edit } from '../../../..//store'
-import { delGoodsCar } from '../../../../service/car/index'
+import { clearCar, edit } from '@/store/index'
+import { delGoodsCar } from '@/service/car/index'
 import styles from './inde.module.scss'
 
 interface IProps {

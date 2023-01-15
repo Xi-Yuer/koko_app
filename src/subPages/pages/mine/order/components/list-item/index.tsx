@@ -1,6 +1,8 @@
 import { Image, View, Text } from '@tarojs/components'
 import { FC, memo } from 'react'
 import dayjs from 'dayjs'
+import { Enum } from '@/enum/index'
+
 
 import styles from './inddex.module.scss'
 
@@ -8,12 +10,7 @@ interface IProps {
   data: any;
   status: number
 }
-const enuem = {
-  0: "代付款",
-  1: "代发货",
-  2: "运输中",
-  3: "已签收"
-}
+
 const ListItem: FC<IProps> = memo((props) => {
   const { data, status } = props
   return (
@@ -22,7 +19,7 @@ const ListItem: FC<IProps> = memo((props) => {
         data?.products?.map(i => {
           return (
             <View key={i.id} className={styles.item}>
-              <View className={styles.status}>{enuem[status]}</View>
+              <View className={styles.status}>{Enum[status]}</View>
               <View className={styles.wrapper}>
                 <View className={styles.img}>
                   <Image src={i.product.picture} mode='aspectFill'></Image>

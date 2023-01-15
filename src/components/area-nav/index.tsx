@@ -2,11 +2,11 @@ import Taro from '@tarojs/taro'
 import { View } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
 import { FC, memo } from 'react'
+import { getHeight } from '@/utils/system'
+import { useNavHeight } from '@/hooks/useNavHeight'
 
 import styles from './index.module.scss'
 
-import { getHeight } from '../../utils/system'
-import { useNavHeight } from '../../hooks/useNavHeight'
 
 const AreaNav: FC<any> = memo(() => {
 

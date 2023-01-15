@@ -1,9 +1,9 @@
 import { Image, View, Text } from '@tarojs/components'
 import { memo } from 'react'
+import emptyImg from '@/assets/img/icon/empty.png'
 
 import styles from './index.module.scss'
 
-import emptyImg from '../../assets/img/icon/empty.png'
 
 const Empty = memo(() => {
   return (

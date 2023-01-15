@@ -2,8 +2,8 @@ import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro'
 import { memo, useEffect, useState } from 'react'
 import { useSelector } from 'react-redux'
-import { createOrder, orderPayed, updateOrder } from '../../../../../service/order'
-import { pay } from '../../../../../service/pay/index'
+import { createOrder, orderPayed, updateOrder } from '@/service/order'
+import { pay } from '@/service/pay/index'
 import styles from './index.module.scss'
 
 const Submit = memo(() => {

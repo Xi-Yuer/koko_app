@@ -3,8 +3,8 @@ import Taro, { useDidShow } from '@tarojs/taro'
 import { memo, useState } from 'react'
 import { AtIcon } from 'taro-ui'
 import { useDispatch, useSelector } from 'react-redux'
-import { edit, getUserAddressAction } from '../../../../store/index'
-import { createAddress } from '../../../../service/user/index'
+import { edit, getUserAddressAction } from '@/store/index'
+import { createAddress } from '@/service/user/index'
 
 import styles from './index.module.scss'
 

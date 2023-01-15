@@ -1,8 +1,8 @@
 import { FC, memo, useEffect, useState } from 'react'
 import { Swiper, SwiperItem, View, Image } from '@tarojs/components'
 
-import { getBannerList } from '../../../../service/shop/index'
-import { IBanner } from '../../../../service/shop/type'
+import { getBannerList } from '@/service/shop/index'
+import { IBanner } from '@/service/shop/type'
 import styles from './index.module.scss'
 
 const Banner: FC = memo(() => {
