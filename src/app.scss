@@ -4,6 +4,7 @@
 @import "~taro-ui/dist/style/components/avatar.scss";
 @import "~taro-ui/dist/style/components/icon.scss";
 @import "~taro-ui/dist/style/components/tabs.scss";
+@import "~taro-ui/dist/style/components/swipe-action.scss";
 page {
   background-color: #f8f8f8;
 }
@@ -13,4 +14,7 @@ button::after {
 }
 .at-tabs__item--active {
   font-weight: bold;
+}
+.at-swipe-action__options {
+  align-items: flex-start !important;
 }

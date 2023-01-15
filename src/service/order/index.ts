@@ -57,3 +57,13 @@ export const getUserOrder = (orderStatus?: number): Promise<any> => {
     },
   });
 };
+
+export const delUserOrder = (orderId: string): Promise<any> => {
+  return request({
+    url: "/order",
+    method: "DELETE",
+    data: {
+      orderId,
+    },
+  });
+};

@@ -43,13 +43,13 @@ const Order = memo(() => {
               <ScrollView
                 scroll-y
                 refresher-enabled
-                style={{ height: "calc(100vh - 43px)" }}
+                style={{ height: "calc(100vh - 43px)", padding: "0 10px", boxSizing: 'border-box' }}
                 refresherTriggered={refresherTriggered}
                 onRefresherRefresh={onRefresherPulling}
               >
                 {
                   list?.map(i => {
-                    return <ListItem key={i.id} data={i} status={current} />
+                    return <ListItem key={i.id} data={i} status={current} initData={initData} />
                   })
                 }
                 {
