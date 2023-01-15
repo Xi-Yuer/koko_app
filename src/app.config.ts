@@ -1,4 +1,5 @@
 export default defineAppConfig({
+  lazyCodeLoading: "requiredComponents",
   pages: [
     "pages/shop/index",
     "pages/menu/index",
@@ -54,5 +55,4 @@ export default defineAppConfig({
     ],
   },
   requiredPrivateInfos: ["chooseAddress"],
-  lazyCodeLoading: "requiredComponents",
 });

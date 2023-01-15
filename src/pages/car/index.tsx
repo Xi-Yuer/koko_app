@@ -1,6 +1,6 @@
 import { View } from '@tarojs/components'
 import { memo, useEffect, useState } from 'react'
-import { useDidShow } from '@tarojs/taro'
+import Taro, { useDidShow, usePullDownRefresh } from '@tarojs/taro'
 import { useSelector } from 'react-redux'
 
 import { getCarGoods } from '@/service/car/index'
@@ -19,10 +19,12 @@ const Car = memo(() => {
 
   useEffect(() => initData(), [])
   useDidShow(() => initData())
+  usePullDownRefresh(() => initData())
 
   const initData = () => {
     getCarGoods().then(({ data }) => {
       setGoods(data)
+      Taro.stopPullDownRefresh()
     })
   }
   return (

@@ -1,6 +1,6 @@
-
 import { FC, memo, useEffect, useState } from 'react'
 import { View } from '@tarojs/components'
+import Taro, { usePullDownRefresh } from '@tarojs/taro'
 
 import { IGoods } from 'src/service/shop/type'
 import { getGoodsList } from '@/service/shop/index'
@@ -16,11 +16,16 @@ import styles from './index.module.scss'
 const Shop: FC = memo(() => {
   const [goodsList, setGoodsList] = useState<IGoods[]>()
 
-  useEffect(() => {
+  useEffect(() => initData(), [])
+
+  const initData = () => {
     getGoodsList().then(res => {
       setGoodsList(res.data)
+      Taro.stopPullDownRefresh()
     })
-  }, [])
+  }
+
+  usePullDownRefresh(() => initData())
 
   return (
     <View className={styles.wrapper}>
