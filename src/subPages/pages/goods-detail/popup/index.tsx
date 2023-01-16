@@ -6,6 +6,7 @@ import { AtInputNumber } from 'taro-ui'
 import { addTemOrder } from '@/store/index'
 import { IntoGoodsCar } from '@/service/car'
 import { IGoodsDetailInfo } from '@/service/shop/type'
+import cache from '@/utils/cache'
 import styles from './index.module.scss'
 
 interface IProps {
@@ -28,6 +29,16 @@ const PopUp: FC<IProps> = memo((props) => {
   }
 
   const clikHandle = () => {
+    const token = cache.get("USER_TOKEN");
+    if (!token) {
+      if (!token) {
+        Taro.showToast({
+          title: "请先登录",
+          icon: "error",
+        });
+        return;
+      }
+    }
     if (!isBuy) {
       // 加入购物车
       IntoGoodsCar(count, data?.id!).then(() => {

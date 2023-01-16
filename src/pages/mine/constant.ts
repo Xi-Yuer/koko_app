@@ -2,11 +2,13 @@ export const fnList = [
   {
     icon: "user",
     title: "个人中心",
+    isPermission: true,
     path: "/subPages/pages/mine/detail/index",
   },
   {
     icon: "shopping-cart",
     title: "订单",
+    isPermission: true,
     path: "/subPages/pages/mine/order/index",
   },
   {

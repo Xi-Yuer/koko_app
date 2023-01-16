@@ -18,6 +18,7 @@ export const createOrder = (products: string, total_price: number) => {
   return request({
     url: "/order/create",
     method: "POST",
+    isPermission: true,
     data: {
       products,
       total_price,
@@ -30,6 +31,7 @@ export const orderPayed = (orderId): Promise<any> => {
   return request({
     url: "/pay/notify_url",
     method: "POST",
+    isPermission: true,
     data: {
       orderId,
     },
@@ -41,6 +43,7 @@ export const updateOrder = (id: string, products: string): Promise<any> => {
   return request({
     url: "/order/update",
     method: "POST",
+    isPermission: true,
     data: {
       id,
       products,
@@ -53,6 +56,7 @@ export const getUserOrder = (orderStatus?: number): Promise<any> => {
   return request({
     url: "/order/orderList",
     showToast: true,
+    isPermission: true,
     data: {
       orderStatus,
     },

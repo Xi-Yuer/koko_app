@@ -1,4 +1,6 @@
+import cache from "@/utils/cache";
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import Taro from "@tarojs/taro";
 
 interface IState {
   temOrders: any[];
@@ -13,6 +15,14 @@ export const orderReducer = createSlice({
   initialState: initState,
   reducers: {
     addTemOrder(state, action: PayloadAction<any>) {
+      const token = cache.get("USER_TOKEN");
+      if (!token) {
+        Taro.showToast({
+          title: "请先登录",
+          icon: "error",
+        });
+        return;
+      }
       state.temOrders = action.payload;
     },
     clearTemOrder(state) {

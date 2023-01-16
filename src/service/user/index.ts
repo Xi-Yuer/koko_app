@@ -40,5 +40,6 @@ export const getUserAddress = (): Promise<{
 }> => {
   return request({
     url: "/user/address",
+    isPermission: true,
   });
 };

@@ -47,7 +47,7 @@ const ListItem: FC<IProps> = memo((props) => {
           <View className={styles.status} onClick={() => setIsOpen(!isOpen)}>
             <View>{Enum[status]}</View>
             {
-              !isOpen && <View className={styles.btn}>· · ·</View>
+              !isOpen && <View className={styles.btn}>···</View>
             }
           </View>
         </AtSwipeAction>

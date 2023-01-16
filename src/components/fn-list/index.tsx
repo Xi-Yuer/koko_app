@@ -1,3 +1,4 @@
+import cache from '@/utils/cache';
 import { View, Text } from '@tarojs/components'
 import Taro from '@tarojs/taro';
 import { FC, memo } from 'react'
@@ -8,6 +9,7 @@ import styles from './index.module.scss'
 interface IItem {
   icon: string;
   title: string;
+  isPermission?: boolean
   path: string;
 }
 
@@ -18,7 +20,17 @@ interface IFnProps {
 const FnList: FC<IFnProps> = memo((props) => {
   const { data } = props
 
-  const navGationTo = () => Taro.navigateTo({ url: data.path })
+  const navGationTo = () => {
+    const token = cache.get("USER_TOKEN")
+    if (token || !data.isPermission) {
+      Taro.navigateTo({ url: data.path })
+    } else {
+      Taro.showToast({
+        title: "请先登录",
+        icon: 'error'
+      })
+    }
+  }
   return (
     <View className={styles.wrapper} onClick={navGationTo}>
       <View className={styles.left}>
