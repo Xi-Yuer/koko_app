@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-import { Button, Text, View } from '@tarojs/components'
+import { Button, Image, Text, View } from '@tarojs/components'
 import Taro, { pxTransform } from '@tarojs/taro'
 import { memo } from 'react'
 import { AtAvatar } from 'taro-ui'
@@ -15,14 +15,14 @@ const Mine = memo(() => {
   const { menuButtonInfo, navHeight } = getHeight()
   const { user } = useSelector<any, any>(state => state)
 
-  const userDispatch = useDispatch()
+  const dispatch = useDispatch()
 
   const getPhoneNumber = ({ detail }) => {
     Taro.login().then(({ code }) => {
       Login(detail.code, code).then(res => {
-        userDispatch(setUser(res))
+        dispatch(setUser(res))
         getUserAddress().then(address => {
-          userDispatch(getUserAddressAction(address.data[0]))
+          dispatch(getUserAddressAction(address.data[0]))
         })
       })
     })
@@ -40,7 +40,7 @@ const Mine = memo(() => {
           <Text>个人中心</Text>
         </View>
         <View className={styles.login}>
-          <AtAvatar circle text={user?.detail?.name || 'x'} image={user?.detail?.avatar}></AtAvatar>
+          <Image src={user?.detail?.avatar} mode='aspectFill'></Image>
           <View className={styles.user_name}>
             {
               user.detail ? <Text>{user?.detail?.name}</Text> : <Button style={{ display: 'contents' }} openType='getPhoneNumber' onGetPhoneNumber={getPhoneNumber} hoverClass='none'><Text className={styles.login_btn}>点击登录</Text></Button>
