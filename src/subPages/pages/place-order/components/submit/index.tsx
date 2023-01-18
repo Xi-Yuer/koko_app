@@ -80,7 +80,7 @@ const Submit = memo(() => {
         },
         fail: function () {
           Taro.showToast({
-            title: res.message,
+            title: res.message || '支付失败',
             icon: 'error'
           })
         }

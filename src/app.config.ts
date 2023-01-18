@@ -22,7 +22,7 @@ export default defineAppConfig({
   window: {
     backgroundTextStyle: "light",
     navigationBarBackgroundColor: "#fff",
-    navigationBarTitleText: "龙山生态甲鱼",
+    navigationBarTitleText: "小刚副业",
     navigationBarTextStyle: "black",
   },
   tabBar: {
