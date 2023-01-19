@@ -2,11 +2,12 @@ import { useSelector, useDispatch } from 'react-redux'
 import { Button, Image, Text, View } from '@tarojs/components'
 import Taro, { pxTransform } from '@tarojs/taro'
 import { memo } from 'react'
-import { AtAvatar } from 'taro-ui'
 import { getUserAddress, Login } from '@/service/user/index'
 import { getHeight } from '@/utils/system'
 import { getUserAddressAction, setUser } from '@/store/index'
 import FnList from '@/components/fn-list/index'
+
+import avatar from '@/assets/img/avatar/avatar.png'
 
 import { fnList } from './constant'
 import styles from './index.module.scss'
@@ -40,7 +41,7 @@ const Mine = memo(() => {
           <Text>个人中心</Text>
         </View>
         <View className={styles.login}>
-          <Image src={user?.detail?.avatar} mode='aspectFill'></Image>
+          <Image src={user?.detail?.avatar || avatar} mode='aspectFill'></Image>
           <View className={styles.user_name}>
             {
               user.detail ? <Text>{user?.detail?.name}</Text> : <Button style={{ display: 'contents' }} openType='getPhoneNumber' onGetPhoneNumber={getPhoneNumber} hoverClass='none'><Text className={styles.login_btn}>点击登录</Text></Button>
