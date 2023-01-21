@@ -15,7 +15,7 @@ const store = configureStore({
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;
 
-export const { setUser, getUserAddressAction } = userReducer.actions;
+export const { setUser, setUserAddressAction } = userReducer.actions;
 export const { addCar, delCar, clearCar, edit } = carReducer.actions;
 export const { addTemOrder, clearTemOrder } = orderReducer.actions;
 export default store;

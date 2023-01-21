@@ -5,7 +5,7 @@ import { memo, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import cache from '@/utils/cache'
 import { createAddress } from '@/service/user/index'
-import { getUserAddressAction } from '@/store/index'
+import { setUserAddressAction } from '@/store/index'
 import OrderItem from './components/order-item'
 import Submit from './components/submit'
 
@@ -29,7 +29,7 @@ const PlaceOrder = memo(() => {
         telNumber: res.telNumber,
         userName: res.userName
       }).then(() => {
-        dispatch(getUserAddressAction(res))
+        dispatch(setUserAddressAction(res))
         setAdd(res)
       })
     })

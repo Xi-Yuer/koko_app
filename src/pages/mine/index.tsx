@@ -4,7 +4,7 @@ import Taro, { pxTransform } from '@tarojs/taro'
 import { memo } from 'react'
 import { getUserAddress, Login } from '@/service/user/index'
 import { getHeight } from '@/utils/system'
-import { getUserAddressAction, setUser } from '@/store/index'
+import { setUserAddressAction, setUser } from '@/store/index'
 import FnList from '@/components/fn-list/index'
 
 import avatar from '@/assets/img/avatar/avatar.png'
@@ -23,7 +23,7 @@ const Mine = memo(() => {
       Login(detail.code, code).then(res => {
         dispatch(setUser(res))
         getUserAddress().then(address => {
-          dispatch(getUserAddressAction(address.data[0]))
+          dispatch(setUserAddressAction(address.data[0]))
         })
       })
     })

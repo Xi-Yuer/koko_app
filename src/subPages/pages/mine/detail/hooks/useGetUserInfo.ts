@@ -18,5 +18,6 @@ export const useGetUserInfo = () => {
   };
   return {
     get,
+    dispatch
   };
 };

@@ -1,8 +1,10 @@
+import Taro from '@tarojs/taro'
 import { Button, Image, View } from '@tarojs/components'
 import { memo, useState } from 'react'
 import { useSelector } from 'react-redux'
 import { AtIcon, AtModal, AtModalContent, AtModalAction, AtTextarea } from 'taro-ui'
-import { updateUserInfo } from '@/service/user'
+import { createAddress, updateUserInfo } from '@/service/user'
+import { setUserAddressAction } from '@/store'
 import { useUploadAvatar, useGetUserInfo } from './hooks/index'
 
 import styles from './index.module.scss'
@@ -16,7 +18,7 @@ const Detail = memo(() => {
 
   const { user } = useSelector<any, any>(state => state)
   const uploadAvatar = useUploadAvatar()
-  const { get } = useGetUserInfo()
+  const { get, dispatch } = useGetUserInfo()
 
   const updateAvatarAction = () => {
     uploadAvatar().then(() => {
@@ -40,6 +42,16 @@ const Detail = memo(() => {
     setIsEdit(true)
     setType(types)
     types === 0 ? setPlacehoder('请输入您的昵称') : setPlacehoder('请输入个人简介')
+  }
+
+  const chooseAddressHandel = () => {
+    Taro.chooseAddress({
+      success(res) {
+        createAddress(res).then(() => {
+          dispatch(setUserAddressAction(res))
+        })
+      }
+    })
   }
 
   return (
@@ -72,15 +84,15 @@ const Detail = memo(() => {
       <View className={styles.row_i}>
         <View className={styles.left}>性别</View>
         <View className={styles.center}>{!user.detail.gender ? '女' : '男'}</View>
-        <View className={styles.right}>
+        {/* <View className={styles.right}>
           <AtIcon value='chevron-right' size='20' color='grey'></AtIcon>
-        </View>
+        </View> */}
       </View>
       <View className={styles.row_i}>
         <View className={styles.left}>权限</View>
         <View className={styles.center}>{user.detail.is_admin ? '管理员' : '非管理员'}</View>
       </View>
-      <View className={styles.row_i}>
+      <View className={styles.row_i} onClick={chooseAddressHandel}>
         <View className={styles.left}>地址</View>
         <View className={styles.center}>{user.address.cityName + user.address.countyName + user.address.detailInfo}</View>
         <View className={styles.right}>

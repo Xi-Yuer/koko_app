@@ -26,7 +26,7 @@ export const userReducer = createSlice({
       }
     },
 
-    getUserAddressAction(state, action: PayloadAction<any>) {
+    setUserAddressAction(state, action: PayloadAction<any>) {
       state.address = action.payload;
       if (action.payload) {
         cache.set("USER_ADDRESS", action.payload);
