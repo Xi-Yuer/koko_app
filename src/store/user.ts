@@ -32,5 +32,10 @@ export const userReducer = createSlice({
         cache.set("USER_ADDRESS", action.payload);
       }
     },
+    clearUserStore(state) {
+      state.detail = null;
+      state.address = null;
+      state.token = "";
+    },
   },
 });
