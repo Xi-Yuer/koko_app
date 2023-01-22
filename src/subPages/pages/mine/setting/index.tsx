@@ -1,5 +1,4 @@
 import { View } from '@tarojs/components'
-import { AtIcon } from 'taro-ui'
 import { useDispatch } from 'react-redux'
 import { memo } from 'react'
 import cache from '@/utils/cache'
@@ -20,8 +19,7 @@ const Setting = memo(() => {
   return (
     <View className={styles.wrapper}>
       <View className={styles.login_out} onClick={loginoutHandel}>
-        <AtIcon value='close-circle' size='20'></AtIcon>
-        <View>退出登录</View>
+        退出登录
       </View>
     </View >
   )

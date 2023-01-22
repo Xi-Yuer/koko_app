@@ -7,7 +7,7 @@ const Notify: FC = memo(() => {
   return (
     <View className={styles.notify}>
       <AtNoticebar marquee icon='volume-plus'>
-        大促销
+        迎新春，拜新年！欢迎各位新老顾客光临，全部商品均支持同城配送。
       </AtNoticebar>
     </View>
   )

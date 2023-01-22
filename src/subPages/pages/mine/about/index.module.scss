@@ -1,11 +1,9 @@
 .wrapper {
-  box-sizing: border-box;
-  padding: 20px;
-  .login_out {
+  padding: 20px 0;
+  .row_i {
     padding: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
     background-color: white;
   }
 }
