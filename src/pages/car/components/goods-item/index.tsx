@@ -46,10 +46,12 @@ const GoodsItem: FC<IProps> = memo((props) => {
   }
   return (
     <View className={styles.wrapper}>
-      <View className={styles.check} style={!check ? { border: '1px solid #b3b3b3' } : ''} onClick={checkHandle}>
-        {
-          check ? <Image src={checkIMG} mode='aspectFill'></Image> : null
-        }
+      <View className={styles.checkContainer} onClick={checkHandle}>
+        <View className={styles.check} style={!check ? { border: '1px solid #b3b3b3' } : ''}>
+          {
+            check ? <Image src={checkIMG} mode='aspectFill'></Image> : null
+          }
+        </View>
       </View>
       <View className={styles.img} onClick={navToDetailPage}>
         <Image src={data.product.picture} mode='aspectFill'></Image>

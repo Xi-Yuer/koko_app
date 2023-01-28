@@ -62,39 +62,39 @@ const Detail = memo(() => {
         </View>
         <View className={styles.left}>
           <View className={styles.img}>
-            <Image src={user.detail.avatar} mode='aspectFill'></Image>
+            <Image src={user?.detail?.avatar} mode='aspectFill'></Image>
             <AtIcon value='chevron-right' size='20' color='grey'></AtIcon>
           </View>
         </View>
       </View>
       <View className={styles.row_i} onClick={() => editHandel(0)}>
         <View className={styles.left}>名字</View>
-        <View className={styles.center}>{user.detail.name}</View>
+        <View className={styles.center}>{user?.detail?.name}</View>
         <View className={styles.right}>
           <AtIcon value='chevron-right' size='20' color='grey'></AtIcon>
         </View>
       </View>
       <View className={styles.row_i} onClick={() => editHandel(1)}>
         <View className={styles.left}>简介</View>
-        <View className={styles.center}>{user.detail.asign}</View>
+        <View className={styles.center}>{user?.detail?.asign}</View>
         <View className={styles.right}>
           <AtIcon value='chevron-right' size='20' color='grey'></AtIcon>
         </View>
       </View>
       <View className={styles.row_i}>
         <View className={styles.left}>性别</View>
-        <View className={styles.center}>{!user.detail.gender ? '女' : '男'}</View>
+        <View className={styles.center}>{!user?.detail?.gender ? '女' : '男'}</View>
         {/* <View className={styles.right}>
           <AtIcon value='chevron-right' size='20' color='grey'></AtIcon>
         </View> */}
       </View>
       <View className={styles.row_i}>
         <View className={styles.left}>权限</View>
-        <View className={styles.center}>{user.detail.is_admin ? '管理员' : '非管理员'}</View>
+        <View className={styles.center}>{user?.detail?.is_admin ? '管理员' : '非管理员'}</View>
       </View>
       <View className={styles.row_i} onClick={chooseAddressHandel}>
         <View className={styles.left}>地址</View>
-        <View className={styles.center}>{user.address.cityName + user.address.countyName + user.address.detailInfo}</View>
+        <View className={styles.center}>{user.address ? user?.address?.cityName + user?.address?.countyName + user?.address?.detailInfo : '请选择收货地址'}</View>
         <View className={styles.right}>
           <AtIcon value='chevron-right' size='20' color='grey'></AtIcon>
         </View>

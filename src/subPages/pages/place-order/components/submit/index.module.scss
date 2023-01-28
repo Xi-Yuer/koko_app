@@ -11,11 +11,47 @@
     color: grey;
     font-size: 25px;
   }
+  .price {
+    display: flex;
+    justify-content: center;
+    // align-items: flex-end;
+    flex-direction: column;
+    view {
+      flex: 1;
+      text-align: right;
+    }
+  }
+  .text {
+    font-size: 20px;
+    display: inline-block;
+    margin-right: 19px;
+    color: orangered;
+  }
   .totalPrice {
     font-weight: bold;
     color: red;
     font-size: 30px;
-    margin:0px 15px;
+    margin: 0px 15px;
+  }
+  .detail {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text {
+      display: inline-block;
+      padding: 15px 0;
+    }
+    .title {
+      font-weight: bold;
+    }
+    .price {
+      color: red;
+      font-weight: bold;
+    }
+    .desc {
+      font-size: 20px;
+      color: gray;
+    }
   }
   .btn {
     text-align: center;

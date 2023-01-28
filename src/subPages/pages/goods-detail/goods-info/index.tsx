@@ -1,3 +1,4 @@
+import Taro from '@tarojs/taro'
 import { Image, Text, View } from '@tarojs/components'
 import { AtIcon } from 'taro-ui'
 import { FC, memo } from 'react'
@@ -11,6 +12,11 @@ interface IProps {
 }
 
 const GoodsInfo: FC<IProps> = memo(({ data }) => {
+  const contactPhone = () => {
+    Taro.makePhoneCall({
+      phoneNumber: '19960056759'
+    })
+  }
   return (
     <View>
       <View className={styles.wrapper}>
@@ -25,7 +31,7 @@ const GoodsInfo: FC<IProps> = memo(({ data }) => {
           <Text className={styles.description}>{data?.description}</Text>
         </View>
         <View className={styles.tip}>
-          <AtIcon value='shopping-cart' size='15' color='#F00'></AtIcon>
+          <AtIcon value='shopping-cart' size='15'></AtIcon>
           <Text>该商品从{data?.product_address}发货 够快够新鲜</Text>
         </View>
       </View>
@@ -47,6 +53,10 @@ const GoodsInfo: FC<IProps> = memo(({ data }) => {
         <View className={styles.row}>
           <Text className={styles.title}>库存</Text>
           <Text className={styles.desc}>{data?.stock}{data?.stock_unit}</Text>
+        </View>
+        <View className={styles.row}>
+          <Text className={styles.title}>联系电话</Text>
+          <Text className={styles.phone} onClick={contactPhone}>19960056759</Text>
         </View>
       </View>
       <Divider title='更多详情' />

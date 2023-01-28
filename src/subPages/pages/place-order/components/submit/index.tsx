@@ -1,3 +1,4 @@
+import { AtIcon, AtFloatLayout } from 'taro-ui'
 import { View, Text } from '@tarojs/components'
 import Taro, { useRouter } from '@tarojs/taro'
 import { memo, useEffect, useState } from 'react'
@@ -20,11 +21,13 @@ const Submit = memo(() => {
 
   const [orderId, setOrderId] = useState('')
   const [total_price, setTotal_price] = useState(0)
+  const [isOpened, setIsOpened] = useState(false)
 
-  let totalPrice = 0;
+  let orignPrice = 0
   temOrders.forEach(i => {
-    totalPrice += Number(i.product.price * i.count)
+    orignPrice += Number(i.product.price * i.count)
   })
+  let totalPrice = orignPrice > 1 ? orignPrice + 15 : orignPrice;
 
   // 页面加载创建订单
   useEffect(() => {
@@ -87,11 +90,37 @@ const Submit = memo(() => {
       })
     })
   }
+
+  // 查看明细
+  const openDetails = () => {
+    setIsOpened(true)
+  }
   return (
     <View className={styles.wrapper}>
       <Text className={styles.totalCount}>共{temOrders.length}件</Text>
-      <Text className={styles.totalPrice}>合计￥{totalPrice.toFixed(2)}</Text>
+      <View className={styles.price}>
+        <View className={styles.totalPrice}>合计￥{totalPrice.toFixed(2)}</View>
+        <View className={styles.text} onClick={openDetails}><AtIcon value='list' size='10'></AtIcon>查看明细</View>
+      </View>
       <View className={styles.btn} onClick={payHandle}>立即支付</View>
+      <AtFloatLayout isOpened={isOpened} onClose={() => setIsOpened(false)} title='金额明细'>
+        <View className={styles.detail}>
+          <Text className={styles.title}>商品总价</Text>
+          <Text className={styles.price}>￥{orignPrice.toFixed(2)}</Text>
+        </View>
+        <View className={styles.detail}>
+          <Text className={styles.title}>包装运费</Text>
+          <Text className={styles.price}>{orignPrice > 1 ? "￥15" : '￥0'}</Text>
+        </View>
+        <View className={styles.detail}>
+          <Text className={styles.title}>合计</Text>
+          <Text className={styles.price}>￥{totalPrice.toFixed(2)}</Text>
+        </View>
+        <View className={styles.detail}>
+          <Text></Text>
+          <Text className={styles.desc}><AtIcon value='alert-circle' size='10'></AtIcon> 同城免配送费，送货到家商家退{orignPrice > 1 ? "￥15" : '￥0'} 运费</Text>
+        </View>
+      </AtFloatLayout>
     </View>
   )
 })
