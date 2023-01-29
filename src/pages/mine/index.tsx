@@ -5,6 +5,7 @@ import { memo } from 'react'
 import { getUserAddress, Login } from '@/service/user/index'
 import { getHeight } from '@/utils/system'
 import { setUserAddressAction, setUser } from '@/store/index'
+import { useSharePage } from '@/hooks/share'
 import FnList from '@/components/fn-list/index'
 
 import avatar from '@/assets/img/avatar/avatar.png'
@@ -17,6 +18,7 @@ const Mine = memo(() => {
   const { user } = useSelector<any, any>(state => state)
 
   const dispatch = useDispatch()
+  useSharePage()
 
   const getPhoneNumber = ({ detail }) => {
     Taro.login().then(({ code }) => {

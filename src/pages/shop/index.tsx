@@ -7,6 +7,7 @@ import { getGoodsList } from '@/service/shop/index'
 
 import AreaTitle from '@/components/area-title/index'
 import Empty from '@/components/empty/index'
+import { useSharePage } from '@/hooks/share'
 import Banner from './components/banner'
 import Notify from './components/notify'
 import Goods from './components/goods'
@@ -15,6 +16,7 @@ import styles from './index.module.scss'
 
 const Shop: FC = memo(() => {
   const [goodsList, setGoodsList] = useState<IGoods[]>()
+  useSharePage()
 
   useEffect(() => initData(), [])
 

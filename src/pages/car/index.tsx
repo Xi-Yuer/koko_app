@@ -5,6 +5,7 @@ import { useSelector } from 'react-redux'
 
 import { getCarGoods } from '@/service/car/index'
 import Empty from '@/components/empty/index'
+import { useSharePage } from '@/hooks/share'
 import Del from './components/del'
 import Edit from './components/edit'
 import GoodsItem from './components/goods-item/index'
@@ -16,7 +17,7 @@ const Car = memo(() => {
 
   const { isEdit } = useSelector<any, any>((state) => state.car)
 
-
+  useSharePage()
   useEffect(() => initData(), [])
   useDidShow(() => initData())
   usePullDownRefresh(() => initData())

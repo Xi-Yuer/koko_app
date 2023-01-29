@@ -5,6 +5,7 @@ import { FC, memo, useEffect, useState } from 'react'
 import AreaNav from '@/components/area-nav/index'
 
 import { IGoodsDetailInfo } from '@/service/shop/type'
+import { useSharePage } from '@/hooks/share'
 import { getGoodsDetail } from '@/service/shop/index'
 import Banner from './banner/index'
 import GoodsInfo from './goods-info'
@@ -18,6 +19,8 @@ const GoodsDetail: FC = memo(() => {
   const [detail, setDetail] = useState<IGoodsDetailInfo>()
   const [openDialog, setOpenDialog] = useState(false)
   const [isBuy, setIsBuy] = useState(false)
+
+  useSharePage()
 
   useEffect(() => {
     const goodsID = router.params.id
