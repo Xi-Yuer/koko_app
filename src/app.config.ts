@@ -16,7 +16,8 @@ export default defineAppConfig({
         "pages/mine/order/index",
         "pages/mine/setting/index",
         "pages/place-order/index",
-        "pages/privacy/index"
+        "pages/privacy/index",
+        "pages/suggestion/index",
       ],
     },
   ],

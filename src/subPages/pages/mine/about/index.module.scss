@@ -1,8 +1,10 @@
 .wrapper {
   padding: 20px 0;
+  font-size: 28px;
   .row_i {
     padding: 20px;
     display: flex;
+    justify-content: space-between;
     align-items: center;
     background-color: white;
   }
