@@ -20,6 +20,7 @@ const Banner: FC = memo(() => {
         indicatorActiveColor='#549bf7'
         circular
         indicatorDots
+        autoplay
       >
         {
           bannerList?.map(i => (
