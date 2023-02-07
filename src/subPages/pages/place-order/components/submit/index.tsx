@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 
 import { delGoodsCar } from '@/service/car/index'
 import { createOrder, getUserOrderByID, orderPayed, updateOrder } from '@/service/order'
+import { postMessage } from '@/service/message'
 import { pay } from '@/service/pay/index'
 import { clearCar, clearTemOrder } from '@/store/index'
 import styles from './index.module.scss'
@@ -24,10 +25,14 @@ const Submit = memo(() => {
   const [isOpened, setIsOpened] = useState(false)
 
   let orignPrice = 0
+  let freight = 0
+
   temOrders.forEach(i => {
     orignPrice += Number(i.product.price * i.count)
+    freight += Number(i.product.freight)
   })
-  let totalPrice = orignPrice > 1 ? orignPrice + 15 : orignPrice;
+
+  let totalPrice = orignPrice + freight;
 
   // 页面加载创建订单
   useEffect(() => {
@@ -59,32 +64,53 @@ const Submit = memo(() => {
     pay(
       detail.openid, "龙山生态甲鱼的消费订单", Math.ceil(total_price * 100), orderId
     ).then(res => {
-      Taro.requestPayment({
-        timeStamp: res.timeStamp,
-        nonceStr: res.nonceStr,
-        package: res.package,
-        signType: res.signType,
-        paySign: res.paySign,
-        success: function () {
-          orderPayed(orderId).then(result => {
-            // 删除购物车里的订单
-            const ids = temOrders.map(i => i.id)
-            delGoodsCar(ids).then(() => {
-              // 清空临时保存的订单
-              dispatch(clearTemOrder())
-              dispatch(clearCar())
-              Taro.navigateBack()
-              Taro.showToast({
-                title: result.message,
-                icon: 'success'
+      Taro.requestSubscribeMessage({
+        tmplIds: ['hyJ8SmaSHpOVpKGUOWnNqUW5GYrEa3kuDJYdPh_TXvA'],
+        success: () => {
+          Taro.requestPayment({
+            timeStamp: res.timeStamp,
+            nonceStr: res.nonceStr,
+            package: res.package,
+            signType: res.signType,
+            paySign: res.paySign,
+            success: function () {
+              // 消息订阅
+              let info = '';
+              temOrders?.forEach((i) => {
+                if (i?.product.product_name) {
+                  info += i?.product?.product_name + i?.count + '件' + '\n' || ''
+                }
               })
-            })
-          })
-        },
-        fail: function () {
-          Taro.showToast({
-            title: res.message || '支付失败',
-            icon: 'error'
+              postMessage(
+                {
+                  orderID: orderId,
+                  description: info,
+                  address: address?.cityName + address?.countyName + address?.detailInfo,
+                  name: address?.userName,
+                  phone: address?.telNumber
+                })
+              orderPayed(orderId).then(result => {
+                // 删除购物车里的订单
+                const ids = temOrders.map(i => i.id)
+                delGoodsCar(ids).then(() => {
+                  // 清空临时保存的订单
+                  dispatch(clearTemOrder())
+                  dispatch(clearCar())
+                  Taro.navigateBack()
+                  Taro.showToast({
+                    title: result.message,
+                    icon: 'success'
+                  })
+                })
+              })
+              Taro.navigateBack()
+            },
+            fail: function () {
+              Taro.showToast({
+                title: res.message || '支付失败',
+                icon: 'error'
+              })
+            },
           })
         }
       })
@@ -110,7 +136,7 @@ const Submit = memo(() => {
         </View>
         <View className={styles.detail}>
           <Text className={styles.title}>包装运费</Text>
-          <Text className={styles.price}>{orignPrice > 1 ? "￥15" : '￥0'}</Text>
+          <Text className={styles.price}>{freight}</Text>
         </View>
         <View className={styles.detail}>
           <Text className={styles.title}>合计</Text>
@@ -118,7 +144,7 @@ const Submit = memo(() => {
         </View>
         <View className={styles.detail}>
           <Text></Text>
-          <Text className={styles.desc}><AtIcon value='alert-circle' size='10'></AtIcon> 同城免配送费，送货到家商家退{orignPrice > 1 ? "￥15" : '￥0'} 运费</Text>
+          <Text className={styles.desc}><AtIcon value='alert-circle' size='10'></AtIcon> 同城免配送费，送货到家商家退{orignPrice > 1 ? `￥${freight}` : '￥0'} 运费</Text>
         </View>
       </AtFloatLayout>
     </View>

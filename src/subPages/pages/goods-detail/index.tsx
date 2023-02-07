@@ -1,8 +1,10 @@
 import { View } from '@tarojs/components'
 import { useRouter } from '@tarojs/taro'
 import { AtFloatLayout } from "taro-ui"
-import { FC, memo, useEffect, useState } from 'react'
+import { FC, Fragment, memo, useEffect, useState } from 'react'
+
 import AreaNav from '@/components/area-nav/index'
+import Empty from '@/components/empty'
 
 import { IGoodsDetailInfo } from '@/service/shop/type'
 import { useSharePage } from '@/hooks/share'
@@ -38,14 +40,20 @@ const GoodsDetail: FC = memo(() => {
   return (
     <View>
       <AreaNav />
-      <Banner data={detail?.banners} />
-      <View className={styles.padding_}>
-        <GoodsInfo data={detail} />
-      </View>
-      <BuyControl open={openDialogHandle} />
-      <AtFloatLayout isOpened={openDialog} onClose={() => setOpenDialog(false)}>
-        <PopUp data={detail} isBuy={isBuy} closePopup={closePopup} />
-      </AtFloatLayout>
+      {
+        detail?.id ?
+          <Fragment>
+            <Banner data={detail?.banners} />
+            <View className={styles.padding_}>
+              <GoodsInfo data={detail} />
+            </View>
+            <BuyControl open={openDialogHandle} />
+            <AtFloatLayout isOpened={openDialog} onClose={() => setOpenDialog(false)}>
+              <PopUp data={detail} isBuy={isBuy} closePopup={closePopup} />
+            </AtFloatLayout>
+          </Fragment> : <Empty />
+      }
+
     </View>
   )
 })

@@ -19,6 +19,7 @@ export const createOrder = (products: string, total_price: number) => {
     url: "/order/create",
     method: "POST",
     isPermission: true,
+    showToast: true,
     data: {
       products,
       total_price,

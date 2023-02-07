@@ -3,7 +3,7 @@ import { useDispatch } from 'react-redux'
 import { memo } from 'react'
 import cache from '@/utils/cache'
 import Taro from '@tarojs/taro'
-import { clearUserStore } from '@/store'
+import { clearUserStore, clearTemOrder } from '@/store'
 
 import styles from './index.module.scss'
 
@@ -12,8 +12,9 @@ const Setting = memo(() => {
   const loginoutHandel = () => {
     cache.clear()
     dispatch(clearUserStore())
-    Taro.switchTab({
-      url: '/pages/mine/index'
+    dispatch(clearTemOrder())
+    Taro.reLaunch({
+      url: '/pages/shop/index'
     })
   }
   return (

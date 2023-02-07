@@ -14,6 +14,7 @@ export const fnList = [
   {
     icon: "settings",
     title: "设置",
+    isPermission: true,
     path: "/subPages/pages/mine/setting/index",
   },
   {

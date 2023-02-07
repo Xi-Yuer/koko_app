@@ -1,6 +1,6 @@
 import { FC, memo, useEffect, useState } from 'react'
 import { View } from '@tarojs/components'
-import Taro, { usePullDownRefresh } from '@tarojs/taro'
+import Taro, { pxTransform, usePullDownRefresh } from '@tarojs/taro'
 
 import { IGoods } from 'src/service/shop/type'
 import { getGoodsList } from '@/service/shop/index'
@@ -40,7 +40,7 @@ const Shop: FC = memo(() => {
           )
         }
         {
-          !goodsList?.length && <Empty />
+          (goodsList?.length as number) <= 0 && <View style={{ boxSizing: 'border-box', height: pxTransform(400), overflow: "hidden" }}><Empty /></View>
         }
       </View>
     </View>

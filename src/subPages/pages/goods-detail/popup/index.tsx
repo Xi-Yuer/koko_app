@@ -32,6 +32,9 @@ const PopUp: FC<IProps> = memo((props) => {
     const token = cache.get("USER_TOKEN");
     if (!token) {
       if (!token) {
+        Taro.switchTab({
+          url: '/pages/mine/index'
+        })
         Taro.showToast({
           title: "请先登录",
           icon: "error",

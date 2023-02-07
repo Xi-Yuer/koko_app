@@ -5,6 +5,7 @@ export const pay = (openid, des, total, product_id) => {
     url: "/pay",
     method: "POST",
     isPermission: true,
+    showToast: true,
     data: {
       openid,
       des,
