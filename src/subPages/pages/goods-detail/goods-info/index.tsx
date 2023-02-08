@@ -40,7 +40,7 @@ const GoodsInfo: FC<IProps> = memo(({ data }) => {
         <AreaTitle title='商品参数' />
         <View className={styles.row}>
           <Text className={styles.title}>计量单位</Text>
-          <Text className={styles.desc}>{data?.price}/{data?.stock_unit}</Text>
+          <Text className={styles.desc}>￥{data?.price}/{data?.stock_unit}</Text>
         </View>
         <View className={styles.row}>
           <Text className={styles.title}>品牌</Text>

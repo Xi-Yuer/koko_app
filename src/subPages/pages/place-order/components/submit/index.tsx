@@ -136,7 +136,7 @@ const Submit = memo(() => {
         </View>
         <View className={styles.detail}>
           <Text className={styles.title}>包装运费</Text>
-          <Text className={styles.price}>{freight}</Text>
+          <Text className={styles.price}>￥{freight}</Text>
         </View>
         <View className={styles.detail}>
           <Text className={styles.title}>合计</Text>
@@ -144,7 +144,7 @@ const Submit = memo(() => {
         </View>
         <View className={styles.detail}>
           <Text></Text>
-          <Text className={styles.desc}><AtIcon value='alert-circle' size='10'></AtIcon> 同城免配送费，送货到家商家退{orignPrice > 1 ? `￥${freight}` : '￥0'} 运费</Text>
+          <Text className={styles.desc}><AtIcon value='alert-circle' size='10'></AtIcon> 同城免配送费，送货到家商家退{`￥${freight}`} 运费</Text>
         </View>
       </AtFloatLayout>
     </View>
