@@ -12,6 +12,12 @@ export const fnList = [
     path: "/subPages/pages/mine/order/index",
   },
   {
+    icon: "message",
+    type: "contact",
+    title: "客服",
+    isPermission: true,
+  },
+  {
     icon: "settings",
     title: "设置",
     isPermission: true,

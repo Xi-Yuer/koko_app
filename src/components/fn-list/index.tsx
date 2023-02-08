@@ -1,5 +1,5 @@
 import cache from '@/utils/cache';
-import { View, Text } from '@tarojs/components'
+import { View, Text, Button, ButtonProps } from '@tarojs/components'
 import Taro from '@tarojs/taro';
 import { FC, memo } from 'react'
 import { AtIcon } from 'taro-ui';
@@ -9,6 +9,7 @@ import styles from './index.module.scss'
 interface IItem {
   icon: string;
   title: string;
+  type: ButtonProps.OpenType | undefined;
   isPermission?: boolean
   path: string;
 }
@@ -32,7 +33,7 @@ const FnList: FC<IFnProps> = memo((props) => {
     }
   }
   return (
-    <View className={styles.wrapper} onClick={navGationTo}>
+    <Button className={styles.wrapper} openType={data.type} onClick={navGationTo}>
       <View className={styles.left}>
         <AtIcon value={data.icon} size='20'></AtIcon>
         <Text className={styles.title}>
@@ -42,7 +43,7 @@ const FnList: FC<IFnProps> = memo((props) => {
       <View>
         <AtIcon value='chevron-right' size='20'></AtIcon>
       </View>
-    </View>
+    </Button>
   )
 })
 
