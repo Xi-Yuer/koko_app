@@ -9,9 +9,9 @@ import styles from './index.module.scss'
 interface IItem {
   icon: string;
   title: string;
-  type: ButtonProps.OpenType | undefined;
+  type?: ButtonProps.OpenType | undefined;
   isPermission?: boolean
-  path: string;
+  path: string | undefined;
 }
 
 interface IFnProps {
@@ -24,7 +24,9 @@ const FnList: FC<IFnProps> = memo((props) => {
   const navGationTo = () => {
     const token = cache.get("USER_TOKEN")
     if (token || !data.isPermission) {
-      Taro.navigateTo({ url: data.path })
+      if (data.path) {
+        Taro.navigateTo({ url: data.path })
+      }
     } else {
       Taro.showToast({
         title: "请先登录",
